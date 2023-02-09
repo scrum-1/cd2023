@@ -206,8 +206,15 @@
 <p>與 NX, Onshape 比較:</p>
 <p style="padding-left: 30px;">自帶使用授權, 可在不上網情況下使用</p>
 <p style="padding-left: 30px;">安裝版 (下載 3.8GB, 安裝後佔 8GB) 可以使用 NX Nastran 執行 CAE 工程分析</p>
-<p style="padding-left: 30px;">可攜版 (下載 13GB, 解開後 15GB) 可放入隨身碟在符合條件的 Windows 中使用</p>
-<p style="padding-left: 30px;">功能與 SolidWorks, Onshape 相當, 屬於中級 MCAD</p><h2>Solvespace</h2>
+<p style="padding-left: 30px;">功能與 SolidWorks, Onshape 相當, 屬於中級 MCAD</p>
+<p>在安裝防寫卡的電腦中使用 Solid Edge 2023:</p>
+<p style="padding-left: 30px;">因為系統並未安裝 Solid Edge, 因此可以使用已經安裝 Solid Edge 的 vdi 製作一個虛擬主機後使用</p>
+<p style="padding-left: 30px;">配合 subst 指令, 設法在安裝 MS Edge Webview 與 VC 2015-2019 redistributable 後, import 所需的 .reg 後, 將 install 指令指向 .msi 並且設定 p_schema 與 se_license_server 等環境變數後執行 edge.exe 後啟動. 例如: start_se2023.bat</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set p_schema=c:\se2023\schema
+set se_license_server=c:\se2023\preferences\selicense.lic
+
+start c:\se2023\program\edge.exe</pre>
+<p style="padding-left: 30px;"></p><h2>Solvespace</h2>
 <p><a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a></p>
 <p><a href="https://solvespace.com/forum.pl">Solvespace Forum</a></p>
 <h2>Pyslvs-UI</h2>
