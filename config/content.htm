@@ -216,17 +216,46 @@
 <p style="padding-left: 30px;"><a href="https://docs.plm.automation.siemens.com/docs/se/2020/api/webframe.html">SE2020 API Documentation</a></p>
 <p>與 NX, Onshape 比較:</p>
 <p style="padding-left: 30px;">自帶使用授權, 可在不上網情況下使用</p>
-<p style="padding-left: 30px;">安裝版 (下載 3.8GB, 安裝後佔 8GB) 可以使用 NX Nastran 執行 CAE 工程分析</p>
+<p style="padding-left: 30px;">安裝版 (下載 3.8GB, 安裝後佔 8GB), 適合在自己的電腦或筆電中安裝執行.</p>
+<p style="padding-left: 30px;">可攜版 (下載 4.28GB, 解開後佔 9.4GB), 適合在有防寫卡保護的電腦或虛擬主機中使用.</p>
 <p style="padding-left: 30px;">功能與 SolidWorks, Onshape 相當, 屬於中級 MCAD</p>
 <p>在安裝防寫卡的電腦中使用 Solid Edge 2023:</p>
-<p style="padding-left: 30px;">因為系統並未安裝 Solid Edge, 因此可以使用已經安裝 Solid Edge 的 vdi 製作一個虛擬主機後使用</p>
-<p style="padding-left: 30px;">配合 subst 指令, 設法在安裝 MS Edge Webview 與 VC 2015-2019 redistributable 後, import 所需的 .reg 後, 將 install 指令指向 .msi 並且設定 p_schema 與 se_license_server 等環境變數後執行 edge.exe 後啟動. 例如: start_se2023.bat</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set p_schema=c:\se2023\schema
-set se_license_server=c:\se2023\preferences\selicense.lic
+<ol>
+<li>因為系統並未安裝 Solid Edge, 因此可以使用已經安裝 Solid Edge 的 vdi 製作一個虛擬主機後使用</li>
+<li>配合 subst 指令, 設法在安裝 MS Edge Webview 與 VC 2015-2019 redistributable 後, import 所需的 .reg 後, 將 install 指令指向 .msi 並且設定 p_schema 與 se_license_server 等環境變數後執行 edge.exe 後啟動. 例如:</li>
+</ol>
+<p>start_se2023.bat</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+set Disk=x
+subst %Disk%: "data"
 
-start c:\se2023\program\edge.exe</pre>
-<p style="padding-left: 30px;"></p>
-<h2>Solvespace</h2>
+set se_license_server=x:\se2023\Preferences\SELicense.lic
+set p_schema=x:\se2023\Schema
+set sessionname=console
+REM set keyshot11=c:\users\public\documents\keyshot 11
+set keyshot_external_license_folder=x:\se2023\program
+
+start x:\se2023\program\edge.exe</pre>
+<p>stop_se2023.bat</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+set Disk=x
+path=%PATH%;
+
+taskkill /IM edge.exe /F
+
+REM 終止虛擬硬碟與目錄的對應
+subst %Disk%: /D
+
+EXIT</pre>
+<p>若在設定 X 虛擬槽之後, 關閉 Solid Edge 2023 後, 尚未執行 stop_se2023.bat 之前開啟 Solid Edge 2023, 則可以使用下列 start.bat</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set se_license_server=x:\se2023\Preferences\SELicense.lic
+set p_schema=x:\se2023\Schema
+set sessionname=console
+REM set keyshot11=c:\users\public\documents\keyshot 11
+set keyshot_external_license_folder=x:\se2023\program
+
+start x:\se2023\program\edge.exe</pre>
+<p></p><h2>Solvespace</h2>
 <p><a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a></p>
 <p><a href="https://solvespace.com/forum.pl">Solvespace Forum</a></p>
 <h2>Pyslvs-UI</h2>
