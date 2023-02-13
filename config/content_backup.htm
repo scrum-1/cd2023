@@ -265,6 +265,39 @@ REM set keyshot11=c:\users\public\documents\keyshot 11
 set keyshot_external_license_folder=x:\se2023\program
 
 start x:\se2023\program\edge.exe</pre>
+<h3>Solid Edge docs</h3>
+<p><a href="https://docs.plm.automation.siemens.com/tdoc/se/108/se4_engineering_students#uid:index_intro_3d_cad_modeling:xid1085047">intro to 3D CAD modeling</a></p>
+<p><a href="https://solidedgest-wordpress-com.translate.goog/?_x_tr_sl=auto&amp;_x_tr_tl=en">Solid Edge reloaded</a></p>
+<p>With ironpython (<a href="https://community.sw.siemens.com/s/question/0D54O000061xshlSAA/solid-edge-programming-with-python-is-it-possible">ref</a>):</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">    # Header
+    import clr
+    clr.AddReference("Interop.SolidEdge")
+    clr.AddReference("SolidEdge.Community")
+    clr.AddReference("System.Runtime.InteropServices")
+     
+    # Import Solid Edge Classes
+    import SolidEdgeFramework as seFramework
+    import SolidEdgePart as sePart
+    import SolidEdgeCommunity as seCommunity
+    import System.Runtime.InteropServices as SRI
+    from System import Console, Array
+     
+    # Solid Edge Objects
+    seApplication = None
+    seDocuments = None
+    sePartDocument = None
+     
+    # Start tasks here
+    try:
+        seCommunity.OleMessageFilter.Register()
+        seApplication = seCommunity.SolidEdgeUtils.Connect(True)
+        seDocuments = seApplication.Documents
+        sePartDocument = seDocuments.Add("SolidEdge.PartDocument")
+        
+    except :
+        print("Exception")
+    finally:
+        seCommunity.OleMessageFilter.Ungister()</pre>
 <p></p><h2>Solvespace</h2>
 <p><a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a></p>
 <p><a href="https://solvespace.com/forum.pl">Solvespace Forum</a></p>
@@ -301,11 +334,10 @@ start x:\se2023\program\edge.exe</pre>
 <p style="padding-left: 30px;">Pure compound shape</p>
 <p style="padding-left: 30px;">Heightfield shape: can also be considered as pure simple shapes, and are optimized for dynamics collision response calculation</p>
 <p style="padding-left: 30px;"></p>
-<h1>Webots</h1>
+<h2>Webots</h2>
 <p><a href="https://www.cyberbotics.com">https://www.cyberbotics.com</a></p>
 <p><a href="https://webots.cloud/">https://webots.cloud/</a></p>
-<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EcSI1hnHIx1JjZwQDCGk4oIByjVtM4D5-u-jacAj9bXn9g?e=pfaAM6">Download webots_2023a.7z</a> (for @nfu users only)</p>
-<h1>Python</h1>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EcSI1hnHIx1JjZwQDCGk4oIByjVtM4D5-u-jacAj9bXn9g?e=pfaAM6">Download webots_2023a.7z</a> (for @nfu users only)</p><h1>Python</h1>
 <p>利用以下流程所建立的 Python 3.11.2 可攜套件: <a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EbT9h2uxP41DhXp6TkYQKNABgtLPvnMq5y781nH5TzeuNQ?e=zW9Hkf">Python311_portable.7z</a> (for @nfu users only)</p>
 <h4>何謂可攜式 Python 程式環境?</h4>
 <h4 style="padding-left: 30px;">Python 程式是如何執行的?</h4>
