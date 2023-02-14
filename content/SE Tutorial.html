@@ -2,7 +2,7 @@
         <head>
         <title>cd2023</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,9 +141,49 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Solvespace << <a href='Solvespace.html'>Previous</a> <a href='FreeCAD.html'>Next</a> >> FreeCAD<br /><h1>Pyslvs-UI</h1>
-<p><a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a></p>
-<br />Solvespace << <a href='Solvespace.html'>Previous</a> <a href='FreeCAD.html'>Next</a> >> FreeCAD</div>
+    <div id="tipue_search_content">Solid Edge << <a href='Solid Edge.html'>Previous</a> <a href='Virtualization.html'>Next</a> >> Virtualization<br /><h1>SE Tutorial</h1>
+<p><a href="https://docs.plm.automation.siemens.com/tdoc/se/108/se4_engineering_students#uid:index_intro_3d_cad_modeling:xid1085047">intro to 3D CAD modeling</a></p>
+<p><a href="https://video.sw.siemens.com/embed/a41cb542-3fb5-4b9f-8b05-2209306d95d6">Quick UI tour</a></p>
+<p><a href="https://video.sw.siemens.com/embed/a55dc0d6-955f-4c96-a76b-7207e5033d12">Create a part</a></p>
+<p><a href="https://video.sw.siemens.com/embed/94836790-12f9-4c90-ac87-b724b8fa3384">Create an assembly</a></p>
+<p><a href="https://video.sw.siemens.com/embed/974b59bc-6ad9-42fa-b0be-d19e6d33736c">Create a drawing</a></p>
+<p><a href="https://video.sw.siemens.com/embed/03016e76-bfba-485d-a81a-bf82ee3896e6">Simulation workflow</a></p>
+<p><a href="https://docs.sw.siemens.com/en-US/doc/246738425/PL20211001099989437.user_interface/xid486886">More tutorial videos</a></p>
+<p>Blogs:</p>
+<p style="padding-left: 30px;"><a href="https://solidedgest-wordpress-com.translate.goog/?_x_tr_sl=auto&amp;_x_tr_tl=en">Solid Edge reloaded</a></p>
+<p><a href="https://studylib.net/doc/10207215/dynamic-designer-%C2%AE-demo--for-solid-edge-">Dynamic Designer</a></p>
+<p>With ironpython (<a href="https://community.sw.siemens.com/s/question/0D54O000061xshlSAA/solid-edge-programming-with-python-is-it-possible">ref</a>):</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">    # Header
+    import clr
+    clr.AddReference("Interop.SolidEdge")
+    clr.AddReference("SolidEdge.Community")
+    clr.AddReference("System.Runtime.InteropServices")
+     
+    # Import Solid Edge Classes
+    import SolidEdgeFramework as seFramework
+    import SolidEdgePart as sePart
+    import SolidEdgeCommunity as seCommunity
+    import System.Runtime.InteropServices as SRI
+    from System import Console, Array
+     
+    # Solid Edge Objects
+    seApplication = None
+    seDocuments = None
+    sePartDocument = None
+     
+    # Start tasks here
+    try:
+        seCommunity.OleMessageFilter.Register()
+        seApplication = seCommunity.SolidEdgeUtils.Connect(True)
+        seDocuments = seApplication.Documents
+        sePartDocument = seDocuments.Add("SolidEdge.PartDocument")
+        
+    except :
+        print("Exception")
+    finally:
+        seCommunity.OleMessageFilter.Ungister()</pre>
+<p><a href="https://github.com/Rlee13/IronPythonExamplesForSE">https://github.com/Rlee13/IronPythonExamplesForSE</a></p>
+<br />Solid Edge << <a href='Solid Edge.html'>Previous</a> <a href='Virtualization.html'>Next</a> >> Virtualization</div>
         
     <!-- footer -->
       <div class="container">
