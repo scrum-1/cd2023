@@ -166,7 +166,15 @@ from ngsolve.webgui import Draw
 flat = occ.OCCGeometry("Y:/i-tutorials/191_SD_Flat.stp")
 mesh = Mesh(flat.GenerateMesh(maxh=5)).Curve(3)
 Draw (mesh);</pre>
-<p><a href="https://github.com/NGSolve/ngsgui">https://github.com/NGSolve/ngsgui</a> Pyside2 need Python &lt; 3.11</p><br />Femap << <a href='Femap.html'>Previous</a> <a href='Solvespace.html'>Next</a> >> Solvespace</div>
+<p><a href="https://github.com/NGSolve/ngsgui">https://github.com/NGSolve/ngsgui</a> Pyside2 need Python &lt; 3.11</p>
+<p>ngsgui</p>
+<p>Y:\Python3108\Lib\site-packages\jupyter_client\multikernelmanager.py fix</p>
+<p>File "y:\Python3108\Lib\site-packages\jupyter_client\multikernelmanager.py", line 218, in _async_start_kernel<br/>    if km.ready.exception():<br/>asyncio.exceptions.InvalidStateError: Exception is not set.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">            # fixed according to https://stackoverflow.com/questions/73887749/python-why-asyncio-exceptions-invalidstateerror-exception-is-not-set-here by Yen
+            if km.ready.done():
+              if km.ready.exception():
+                  raise km.ready.exception()  # type: ignore</pre>
+<p></p><br />Femap << <a href='Femap.html'>Previous</a> <a href='Solvespace.html'>Next</a> >> Solvespace</div>
         
     <!-- footer -->
       <div class="container">

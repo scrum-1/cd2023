@@ -344,13 +344,21 @@ start x:\se2023\program\edge.exe</pre>
 <p style="padding-left: 30px;">jupyter-notebook index.ipynb</p>
 <p style="padding-left: 30px;">使用 <a href="http://localhost:8888">http://localhost:8888</a> 並以密碼登入</p>
 <p><a href="https://docu.ngsolve.org/nightly/i-tutorials/index.html">https://docu.ngsolve.org/nightly/i-tutorials/index.html</a></p>
-<p><a href="https://github.com/NGSolve/ngsgui/blob/master/src/gui.py">https://github.com/NGSolve/ngsgui/blob/master/src/gui.py</a> </p>
+<p><a href="https://github.com/NGSolve/ngsgui/blob/master/src/gui.py">https://github.com/NGSolve/ngsgui/blob/master/src/gui.py</a></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from ngsolve import *
 from ngsolve.webgui import Draw
 # https://github.com/NGSolve/ngsgui/blob/master/src/gui.py
 flat = occ.OCCGeometry("Y:/i-tutorials/191_SD_Flat.stp")
 mesh = Mesh(flat.GenerateMesh(maxh=5)).Curve(3)
 Draw (mesh);</pre>
+<p><a href="https://github.com/NGSolve/ngsgui">https://github.com/NGSolve/ngsgui</a> Pyside2 need Python &lt; 3.11</p>
+<p>ngsgui</p>
+<p>Y:\Python3108\Lib\site-packages\jupyter_client\multikernelmanager.py fix</p>
+<p>File "y:\Python3108\Lib\site-packages\jupyter_client\multikernelmanager.py", line 218, in _async_start_kernel<br/>    if km.ready.exception():<br/>asyncio.exceptions.InvalidStateError: Exception is not set.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">            # fixed according to https://stackoverflow.com/questions/73887749/python-why-asyncio-exceptions-invalidstateerror-exception-is-not-set-here by Yen
+            if km.ready.done():
+              if  km.ready.exception():
+                  raise km.ready.exception()  # type: ignore</pre>
 <p></p><h2>Solvespace</h2>
 <p><a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a></p>
 <p><a href="https://solvespace.com/forum.pl">Solvespace Forum</a></p><h2>Pyslvs-UI</h2>
