@@ -327,8 +327,9 @@ start x:\se2023\program\edge.exe</pre>
 <p><a href="https://www.femto.eu/wp-content/uploads/2020/01/3.-Quick-guide-to-Femap-API-Python.pdf">https://www.femto.eu/wp-content/uploads/2020/01/3.-Quick-guide-to-Femap-API-Python.pdf</a></p>
 <p><a href="https://community.sw.siemens.com/s/question/0D54O00007Iqhf7SAB/api-to-create-geometry-and-mesh-around-weld-line">https://community.sw.siemens.com/s/question/0D54O00007Iqhf7SAB/api-to-create-geometry-and-mesh-around-weld-line</a></p>
 <h2>NGSolve</h2>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EcsucQG0hGBPvGhckXUXhtwBW9gHS7PI-PE-moKe1vVbdg?e=z3lnu4">Portable Python 3.11.2 for NGSolve project downloads</a></p>
 <p>網路連線至 Server 品質較慢時:</p>
-<p style="padding-left: 30px;">pip --default-timeout=1000 install ngsolve </p>
+<p style="padding-left: 30px;">pip --default-timeout=1000 install ngsolve</p>
 <p style="padding-left: 30px;">pip --default-timeout=1000 install numpy</p>
 <p style="padding-left: 30px;">pip --default-timeout=1000 install webgui_jupyter_widgets</p>
 <p style="padding-left: 30px;">pip --default-timeout=1000 install jupyter</p>
@@ -342,7 +343,13 @@ start x:\se2023\program\edge.exe</pre>
 <p style="padding-left: 30px;">cd i-tutorials</p>
 <p style="padding-left: 30px;">jupyter-notebook index.ipynb</p>
 <p style="padding-left: 30px;">使用 <a href="http://localhost:8888">http://localhost:8888</a> 並以密碼登入</p>
-<p><a href="https://docu.ngsolve.org/nightly/i-tutorials/index.html">https://docu.ngsolve.org/nightly/i-tutorials/index.html</a> </p>
+<p><a href="https://docu.ngsolve.org/nightly/i-tutorials/index.html">https://docu.ngsolve.org/nightly/i-tutorials/index.html</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from ngsolve import *
+from ngsolve.webgui import Draw
+# https://github.com/NGSolve/ngsgui/blob/master/src/gui.py
+flat = occ.OCCGeometry("Y:/i-tutorials/191_SD_Flat.stp")
+mesh = Mesh(flat.GenerateMesh(maxh=5)).Curve(3)
+Draw (mesh);</pre>
 <p></p><h2>Solvespace</h2>
 <p><a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a></p>
 <p><a href="https://solvespace.com/forum.pl">Solvespace Forum</a></p><h2>Pyslvs-UI</h2>
