@@ -483,6 +483,7 @@ start x:\se2023\program\edge.exe</pre>
 <li>編輯 SciTEGlobal.properties 將 line 335 # 拿掉</li>
 <li>編輯 SciTEGlobal.properties 將 line 336 以 # 蓋掉</li>
 </ol>
+<p>修改之後的可攜 Python: <a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/ESbmgwyK-5xGj9A18njOsXoBOmk8gsB0317yaUD3jnK2wQ?e=oOsAnr">wcm_portable_w2-3.7z</a></p>
 <p>然後參考<a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics">與 GetSystemMetrics 有關的說明</a>, 執行下列程式:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import ctypes
 
@@ -491,27 +492,8 @@ print("目前螢幕設定寬:" + str(user32.GetSystemMetrics(0)))
 print("目前螢幕設定長:" + str(user32.GetSystemMetrics(1)))</pre>
 <p>接著確認上述可攜系統已經安裝 pywin32: pip install pywin32</p>
 <p>就可以利用 python -m win32com.client.combrowse 瀏覽操作系統中的 COM 程式庫.</p>
-<p>也可以利用 python -m win32com.client.makepy -i 互動模式將所選擇的動態連結程式庫轉為 .py 程式.</p>
-<p>至於取得與 Solid Edge 安裝後的動態連結程式庫原始碼, 可透過下列指令與程式:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># python -m win32com.client.makepy -i
-
-from win32com.client import gencache
-
-solidedge_part_lib = gencache.EnsureModule('{8A7EFA42-F000-11D1-BDFC-080036B4D502}', 0, 1, 0)
-print(dir(solidedge_part_lib))
-print(repr(solidedge_part_lib))
-
-</pre>
-<p>也就是先執行 python -m win32com.client.makepy -i 選擇 Solid Edge 對應的 Part Type Library 後, 將可在暫存目錄區取得與 Solid Edge Part Type Library 對應的 <a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EW6Ap3PGA5lOhrEYtXYKndABjF-7F5mkYAUKN-FjYPCkOw?e=neeoOr">se_partlib .py</a> 程式庫 (約 4.23 MB, for @nfu users only).</p>
-<p>C:\\Users\\pj2023\\AppData\\Local\\Temp\\gen_py\\3.11\\8A7EFA42-F000-11D1-BDFC-080036B4D502x0x1x0.py<br/><br/></p>
-<p>其他的 Solid Edge 或 Simcenter Femap 對應的 Type Library 也可以循相同的流程轉為 .py 程式庫.</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import win32com.client
-
-se = win32com.client.Dispatch("SolidEdge.InstallData")
-print(se.GetMajorVersion())
-# 可以取得所安裝的 Solid Edge 版本 222, 也就是 2022 釋出的版本
-</pre>
-<p></p><h3>Virtualization</h3>
+<p>參考:</p>
+<p style="padding-left: 30px;"><a href="https://nfuedu-my.sharepoint.com/:b:/g/personal/yen_nfu_edu_tw/EZLh-WxUQalCsEevZZYg5j4BWKeqLa1CkTukFFg7yyIArA?e=nctqWp">Solid Edge Programming Guide.pdf</a> (for @nfu users only)</p><h3>Virtualization</h3>
 <p><a href="https://www.hpe.com/emea_europe/en/what-is/application-virtualization.html">https://www.hpe.com/emea_europe/en/what-is/application-virtualization.html</a></p>
 <p><a href="https://www.hpe.com/emea_europe/en/what-is/hypervisor.html">https://www.hpe.com/emea_europe/en/what-is/hypervisor.html</a></p>
 <p><a href="https://wiki.alquds.edu/?query=Application_Virtualization">https://wiki.alquds.edu/?query=Application_Virtualization</a></p>
