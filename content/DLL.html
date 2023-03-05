@@ -141,59 +141,49 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Solid Edge << <a href='Solid Edge.html'>Previous</a> <a href='DLL.html'>Next</a> >> DLL<br /><h1>SE Tutorial</h1>
-<p><a href="https://docs.plm.automation.siemens.com/tdoc/se/2020/se_help#uid:index_xid618399:xid464417">Solid Edge 自學課程</a></p>
-<p><a href="https://www.youtube.com/watch?v=iBriOq159YU&amp;list=PLtrztM3lxV3kVuJ6RI44z3za2LENNeAUx">Solid Edge 教學影片</a></p>
-<p><a href="https://www.youtube.com/@drmseif/videos">Solid Edge 練習影片</a></p>
-<p><a href="https://docs.plm.automation.siemens.com/tdoc/se/108/se4_engineering_students#uid:index_intro_3d_cad_modeling:xid1085047">intro to 3D CAD modeling</a></p>
-<p><a href="https://video.sw.siemens.com/embed/a41cb542-3fb5-4b9f-8b05-2209306d95d6">Quick UI tour</a></p>
-<p><a href="https://video.sw.siemens.com/embed/a55dc0d6-955f-4c96-a76b-7207e5033d12">Create a part</a></p>
-<p><a href="https://video.sw.siemens.com/embed/94836790-12f9-4c90-ac87-b724b8fa3384">Create an assembly</a></p>
-<p><a href="https://video.sw.siemens.com/embed/974b59bc-6ad9-42fa-b0be-d19e6d33736c">Create a drawing</a></p>
-<p><a href="https://video.sw.siemens.com/embed/03016e76-bfba-485d-a81a-bf82ee3896e6">Simulation workflow</a></p>
-<p><a href="https://docs.sw.siemens.com/en-US/doc/246738425/PL20211001099989437.user_interface/xid486886">More tutorial videos</a></p>
-<p><a href="https://www.youtube.com/@cadcentralnz">CAD Central</a></p>
-<p><a href="https://www.scan2cad.com/blog/cad/solid-edge-basics/">https://www.scan2cad.com/blog/cad/solid-edge-basics/</a></p>
-<p><a href="https://www.digicad.fr/pdf/Solid-Edge-Synchronous-Technology-ebook-61045-tcm1023-254657.pdf">https://www.digicad.fr/pdf/Solid-Edge-Synchronous-Technology-ebook-61045-tcm1023-254657.pdf</a></p>
-<p>Blogs:</p>
-<p style="padding-left: 30px;"><a href="https://solidedgest-wordpress-com.translate.goog/?_x_tr_sl=auto&amp;_x_tr_tl=en">Solid Edge reloaded</a></p>
-<p><a href="https://studylib.net/doc/10207215/dynamic-designer-%C2%AE-demo--for-solid-edge-">Dynamic Designer</a></p>
-<p>With ironpython (<a href="https://community.sw.siemens.com/s/question/0D54O000061xshlSAA/solid-edge-programming-with-python-is-it-possible">ref</a>):</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">    # Header
-    import clr
-    clr.AddReference("Interop.SolidEdge")
-    clr.AddReference("SolidEdge.Community")
-    clr.AddReference("System.Runtime.InteropServices")
-     
-    # Import Solid Edge Classes
-    import SolidEdgeFramework as seFramework
-    import SolidEdgePart as sePart
-    import SolidEdgeCommunity as seCommunity
-    import System.Runtime.InteropServices as SRI
-    from System import Console, Array
-     
-    # Solid Edge Objects
-    seApplication = None
-    seDocuments = None
-    sePartDocument = None
-     
-    # Start tasks here
-    try:
-        seCommunity.OleMessageFilter.Register()
-        seApplication = seCommunity.SolidEdgeUtils.Connect(True)
-        seDocuments = seApplication.Documents
-        sePartDocument = seDocuments.Add("SolidEdge.PartDocument")
-        
-    except :
-        print("Exception")
-    finally:
-        seCommunity.OleMessageFilter.Ungister()</pre>
-<p><a href="https://github.com/Rlee13/IronPythonExamplesForSE">https://github.com/Rlee13/IronPythonExamplesForSE</a></p>
-<p>API:</p>
-<p style="padding-left: 30px;"><a href="https://docs.plm.automation.siemens.com/docs/se/2020/api/webframe.html">https://docs.plm.automation.siemens.com/docs/se/2020/api/webframe.html</a></p>
-<p style="padding-left: 30px;"><a href="https://timshyue.com/category/c/solid-edge-api/">https://timshyue.com/category/c/solid-edge-api/</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/rmcanany/SolidEdgeSpy">https://github.com/rmcanany/SolidEdgeSpy</a></p>
-<p style="padding-left: 30px;"><a href="https://oneplm.com/wp-content/uploads/SEU2015_SolidEdgeAutomation.compressed.pdf">https://oneplm.com/wp-content/uploads/SEU2015_SolidEdgeAutomation.compressed.pdf</a></p><br />Solid Edge << <a href='Solid Edge.html'>Previous</a> <a href='DLL.html'>Next</a> >> DLL</div>
+    <div id="tipue_search_content">SE Tutorial << <a href='SE Tutorial.html'>Previous</a> <a href='Virtualization.html'>Next</a> >> Virtualization<br /><h1>DLL</h1>
+<p>如何透過 Python 重用 Windows TLB or OCX 等 DLL 動態連結程式庫</p>
+<p>以下的 Python 程式採用 <a href="https://mde.tw/wcm2023/content/w2.html">https://mde.tw/wcm2023/content/w2.html</a> 中所建立的可攜 Python 程式套件:</p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EXQljJw1yE9At9MDkIklVFAB9Ef3q59sTJnbRiVWOSSGdw?e=AtNFlJ">wcm_portable_w2-2.7z</a></p>
+<p>並進行下列修改:</p>
+<ol>
+<li>建立 home_ipv6 目錄下的 DeskTop 目錄</li>
+<li>編輯 pyhton.properties 將 line 153 改為: python.command=pythonw</li>
+<li>編輯 SciTEGlobal.properties 將 line 162 改為: load.on.activate=1</li>
+<li>編輯 SciTEGlobal.properties 將 line 204 改為: tabsize=4</li>
+<li>編輯 SciTEGlobal.properties 將 line 205 改為: indent.size=4</li>
+<li>編輯 SciTEGlobal.properties 將 line 335 # 拿掉</li>
+<li>編輯 SciTEGlobal.properties 將 line 336 以 # 蓋掉</li>
+</ol>
+<p>然後參考<a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics">與 GetSystemMetrics 有關的說明</a>, 執行下列程式:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import ctypes
+
+user32 = ctypes.WinDLL('User32.dll')
+print("目前螢幕設定寬:" + str(user32.GetSystemMetrics(0)))
+print("目前螢幕設定長:" + str(user32.GetSystemMetrics(1)))</pre>
+<p>接著確認上述可攜系統已經安裝 pywin32: pip install pywin32</p>
+<p>就可以利用 python -m win32com.client.combrowse 瀏覽操作系統中的 COM 程式庫.</p>
+<p>也可以利用 python -m win32com.client.makepy -i 互動模式將所選擇的動態連結程式庫轉為 .py 程式.</p>
+<p>至於取得與 Solid Edge 安裝後的動態連結程式庫原始碼, 可透過下列指令與程式:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># python -m win32com.client.makepy -i
+
+from win32com.client import gencache
+
+solidedge_part_lib = gencache.EnsureModule('{8A7EFA42-F000-11D1-BDFC-080036B4D502}', 0, 1, 0)
+print(dir(solidedge_part_lib))
+print(repr(solidedge_part_lib))
+
+</pre>
+<p>也就是先執行 python -m win32com.client.makepy -i 選擇 Solid Edge 對應的 Part Type Library 後, 將可在暫存目錄區取得與 Solid Edge Part Type Library 對應的 <a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EW6Ap3PGA5lOhrEYtXYKndABjF-7F5mkYAUKN-FjYPCkOw?e=neeoOr">se_partlib .py</a> 程式庫 (約 4.23 MB, for @nfu users only).</p>
+<p>C:\\Users\\pj2023\\AppData\\Local\\Temp\\gen_py\\3.11\\8A7EFA42-F000-11D1-BDFC-080036B4D502x0x1x0.py<br/><br/></p>
+<p>其他的 Solid Edge 或 Simcenter Femap 對應的 Type Library 也可以循相同的流程轉為 .py 程式庫.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import win32com.client
+
+se = win32com.client.Dispatch("SolidEdge.InstallData")
+print(se.GetMajorVersion())
+# 可以取得所安裝的 Solid Edge 版本 222, 也就是 2022 釋出的版本
+</pre>
+<p></p><br />SE Tutorial << <a href='SE Tutorial.html'>Previous</a> <a href='Virtualization.html'>Next</a> >> Virtualization</div>
         
     <!-- footer -->
       <div class="container">

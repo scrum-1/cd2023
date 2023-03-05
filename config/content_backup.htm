@@ -418,6 +418,7 @@ set keyshot_external_license_folder=x:\se2023\program
 
 start x:\se2023\program\edge.exe</pre>
 <h3>SE Tutorial</h3>
+<p><a href="https://docs.plm.automation.siemens.com/tdoc/se/2020/se_help#uid:index_xid618399:xid464417">Solid Edge 自學課程</a></p>
 <p><a href="https://www.youtube.com/watch?v=iBriOq159YU&amp;list=PLtrztM3lxV3kVuJ6RI44z3za2LENNeAUx">Solid Edge 教學影片</a></p>
 <p><a href="https://www.youtube.com/@drmseif/videos">Solid Edge 練習影片</a></p>
 <p><a href="https://docs.plm.automation.siemens.com/tdoc/se/108/se4_engineering_students#uid:index_intro_3d_cad_modeling:xid1085047">intro to 3D CAD modeling</a></p>
@@ -468,16 +469,58 @@ start x:\se2023\program\edge.exe</pre>
 <p style="padding-left: 30px;"><a href="https://docs.plm.automation.siemens.com/docs/se/2020/api/webframe.html">https://docs.plm.automation.siemens.com/docs/se/2020/api/webframe.html</a></p>
 <p style="padding-left: 30px;"><a href="https://timshyue.com/category/c/solid-edge-api/">https://timshyue.com/category/c/solid-edge-api/</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/rmcanany/SolidEdgeSpy">https://github.com/rmcanany/SolidEdgeSpy</a></p>
-<p style="padding-left: 30px;"><a href="https://oneplm.com/wp-content/uploads/SEU2015_SolidEdgeAutomation.compressed.pdf">https://oneplm.com/wp-content/uploads/SEU2015_SolidEdgeAutomation.compressed.pdf</a></p><h3>Virtualization</h3>
+<p style="padding-left: 30px;"><a href="https://oneplm.com/wp-content/uploads/SEU2015_SolidEdgeAutomation.compressed.pdf">https://oneplm.com/wp-content/uploads/SEU2015_SolidEdgeAutomation.compressed.pdf</a></p><h3>DLL</h3>
+<p>如何透過 Python 重用 Windows TLB or OCX 等 DLL 動態連結程式庫</p>
+<p>以下的 Python 程式採用 <a href="https://mde.tw/wcm2023/content/w2.html">https://mde.tw/wcm2023/content/w2.html</a> 中所建立的可攜 Python 程式套件:</p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EXQljJw1yE9At9MDkIklVFAB9Ef3q59sTJnbRiVWOSSGdw?e=AtNFlJ">wcm_portable_w2-2.7z</a></p>
+<p>並進行下列修改:</p>
+<ol>
+<li>建立 home_ipv6 目錄下的 DeskTop 目錄</li>
+<li>編輯 pyhton.properties 將 line 153 改為: python.command=pythonw</li>
+<li>編輯 SciTEGlobal.properties 將 line 162 改為: load.on.activate=1</li>
+<li>編輯 SciTEGlobal.properties 將 line 204 改為: tabsize=4</li>
+<li>編輯 SciTEGlobal.properties 將 line 205 改為: indent.size=4</li>
+<li>編輯 SciTEGlobal.properties 將 line 335 # 拿掉</li>
+<li>編輯 SciTEGlobal.properties 將 line 336 以 # 蓋掉</li>
+</ol>
+<p>然後參考<a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics">與 GetSystemMetrics 有關的說明</a>, 執行下列程式:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import ctypes
+
+user32 = ctypes.WinDLL('User32.dll')
+print("目前螢幕設定寬:" + str(user32.GetSystemMetrics(0)))
+print("目前螢幕設定長:" + str(user32.GetSystemMetrics(1)))</pre>
+<p>接著確認上述可攜系統已經安裝 pywin32: pip install pywin32</p>
+<p>就可以利用 python -m win32com.client.combrowse 瀏覽操作系統中的 COM 程式庫.</p>
+<p>也可以利用 python -m win32com.client.makepy -i 互動模式將所選擇的動態連結程式庫轉為 .py 程式.</p>
+<p>至於取得與 Solid Edge 安裝後的動態連結程式庫原始碼, 可透過下列指令與程式:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># python -m win32com.client.makepy -i
+
+from win32com.client import gencache
+
+solidedge_part_lib = gencache.EnsureModule('{8A7EFA42-F000-11D1-BDFC-080036B4D502}', 0, 1, 0)
+print(dir(solidedge_part_lib))
+print(repr(solidedge_part_lib))
+
+</pre>
+<p>也就是先執行 python -m win32com.client.makepy -i 選擇 Solid Edge 對應的 Part Type Library 後, 將可在暫存目錄區取得與 Solid Edge Part Type Library 對應的 <a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EW6Ap3PGA5lOhrEYtXYKndABjF-7F5mkYAUKN-FjYPCkOw?e=neeoOr">se_partlib .py</a> 程式庫 (約 4.23 MB, for @nfu users only).</p>
+<p>C:\\Users\\pj2023\\AppData\\Local\\Temp\\gen_py\\3.11\\8A7EFA42-F000-11D1-BDFC-080036B4D502x0x1x0.py<br/><br/></p>
+<p>其他的 Solid Edge 或 Simcenter Femap 對應的 Type Library 也可以循相同的流程轉為 .py 程式庫.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import win32com.client
+
+se = win32com.client.Dispatch("SolidEdge.InstallData")
+print(se.GetMajorVersion())
+# 可以取得所安裝的 Solid Edge 版本 222
+</pre>
+<p></p><h3>Virtualization</h3>
 <p><a href="https://www.hpe.com/emea_europe/en/what-is/application-virtualization.html">https://www.hpe.com/emea_europe/en/what-is/application-virtualization.html</a></p>
 <p><a href="https://www.hpe.com/emea_europe/en/what-is/hypervisor.html">https://www.hpe.com/emea_europe/en/what-is/hypervisor.html</a></p>
 <p><a href="https://wiki.alquds.edu/?query=Application_Virtualization">https://wiki.alquds.edu/?query=Application_Virtualization</a></p>
 <p><a href="https://answers.microsoft.com/en-us/windows/forum/all/how-to-move-the-cusersusernameappdata-folder-to/35e0e881-6e66-4905-9f63-bd99477586b4">https://answers.microsoft.com/en-us/windows/forum/all/how-to-move-the-cusersusernameappdata-folder-to/35e0e881-6e66-4905-9f63-bd99477586b4</a></p>
 <p></p>
-<h2>Femap</h2>
+<p></p><h2>Femap</h2>
 <p>Femap is a finite element modeling and post-processing environment. It interacts with solvers such as Nastran to model physical behavior to assist in the drawing of conclusions about said behavior.</p>
 <p><a href="https://www.plm.automation.siemens.com/plmapp/education/femap/zh_tw/free-software/student">免費學生版 Femap 下載</a> (提供 Femap 2021.2 版)</p>
-<p>"這是一款對學生免費的專業 FEA 軟體<br/><br/>縱觀整個製造產業，降低成本和提高品質的壓力正不斷推動著人們對數字分析和分析技能的需求。具備進階工程分析的知識技能將為您進入專業隊伍提供巨大優勢。利用這款 Femap 學生版軟體，可獲得各種所需的技能，因為該免費版具有市面上最先進的工程分析環境。<br/><br/>此免費下載版：<br/><br/>    可供任何現時學生使用<br/>    用於學術課程<br/>    授權不會過期"</p>
+<p>"這是一款對學生免費的專業 FEA 軟體<br/><br/>縱觀整個製造產業，降低成本和提高品質的壓力正不斷推動著人們對數字分析和分析技能的需求。具備進階工程分析的知識技能將為您進入專業隊伍提供巨大優勢。利用這款 Femap 學生版軟體，可獲得各種所需的技能，因為該免費版具有市面上最先進的工程分析環境。<br/><br/>此免費下載版：<br/><br/>    可供任何現時學生使用<br>    用於學術課程<br>    授權不會過期"</br></br></p>
 <p><a href="https://www.plm.automation.siemens.com/plmapp/education/femap/en_us/free-software/student">Femap Student Edition</a></p>
 <p>"Free professional FEA software for students<br/><br/>Across the manufacturing industry, pressure to reduce costs and improve quality is driving demand for digital simulation and analysis skills. Knowledge of advanced engineering analysis can give you a huge advantage as you enter the professional workforce. You can build the skillset you need with Femap Student Edition software—a free version of the most advanced engineering analysis environment on the market.<br/><br/>This free download:<br/><br/>    Is available to any active student<br/>    Is intended for academic course work<br/>    Has a license that will not expire"</p>
 <p><a href="https://github.com/jjcremmers/PyFEM">https://github.com/jjcremmers/PyFEM</a></p>
