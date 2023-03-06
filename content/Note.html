@@ -2,7 +2,7 @@
         <head>
         <title>cd2023</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,59 +141,22 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Solid Edge << <a href='Solid Edge.html'>Previous</a> <a href='DLL.html'>Next</a> >> DLL<br /><h1>SE Tutorial</h1>
-<p><a href="https://docs.plm.automation.siemens.com/tdoc/se/2020/se_help#uid:index_xid618399:xid464417">Solid Edge 自學課程</a></p>
-<p><a href="https://www.youtube.com/watch?v=iBriOq159YU&amp;list=PLtrztM3lxV3kVuJ6RI44z3za2LENNeAUx">Solid Edge 教學影片</a></p>
-<p><a href="https://www.youtube.com/@drmseif/videos">Solid Edge 練習影片</a></p>
-<p><a href="https://docs.plm.automation.siemens.com/tdoc/se/108/se4_engineering_students#uid:index_intro_3d_cad_modeling:xid1085047">intro to 3D CAD modeling</a></p>
-<p><a href="https://video.sw.siemens.com/embed/a41cb542-3fb5-4b9f-8b05-2209306d95d6">Quick UI tour</a></p>
-<p><a href="https://video.sw.siemens.com/embed/a55dc0d6-955f-4c96-a76b-7207e5033d12">Create a part</a></p>
-<p><a href="https://video.sw.siemens.com/embed/94836790-12f9-4c90-ac87-b724b8fa3384">Create an assembly</a></p>
-<p><a href="https://video.sw.siemens.com/embed/974b59bc-6ad9-42fa-b0be-d19e6d33736c">Create a drawing</a></p>
-<p><a href="https://video.sw.siemens.com/embed/03016e76-bfba-485d-a81a-bf82ee3896e6">Simulation workflow</a></p>
-<p><a href="https://docs.sw.siemens.com/en-US/doc/246738425/PL20211001099989437.user_interface/xid486886">More tutorial videos</a></p>
-<p><a href="https://www.youtube.com/@cadcentralnz">CAD Central</a></p>
-<p><a href="https://www.scan2cad.com/blog/cad/solid-edge-basics/">https://www.scan2cad.com/blog/cad/solid-edge-basics/</a></p>
-<p><a href="https://www.digicad.fr/pdf/Solid-Edge-Synchronous-Technology-ebook-61045-tcm1023-254657.pdf">https://www.digicad.fr/pdf/Solid-Edge-Synchronous-Technology-ebook-61045-tcm1023-254657.pdf</a></p>
-<p>Blogs:</p>
-<p style="padding-left: 30px;"><a href="https://solidedgest-wordpress-com.translate.goog/?_x_tr_sl=auto&amp;_x_tr_tl=en">Solid Edge reloaded</a></p>
-<p><a href="https://studylib.net/doc/10207215/dynamic-designer-%C2%AE-demo--for-solid-edge-">Dynamic Designer</a></p>
-<p>With ironpython (<a href="https://community.sw.siemens.com/s/question/0D54O000061xshlSAA/solid-edge-programming-with-python-is-it-possible">ref</a>):</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">    # Header
-    import clr
-    clr.AddReference("Interop.SolidEdge")
-    clr.AddReference("SolidEdge.Community")
-    clr.AddReference("System.Runtime.InteropServices")
-     
-    # Import Solid Edge Classes
-    import SolidEdgeFramework as seFramework
-    import SolidEdgePart as sePart
-    import SolidEdgeCommunity as seCommunity
-    import System.Runtime.InteropServices as SRI
-    from System import Console, Array
-     
-    # Solid Edge Objects
-    seApplication = None
-    seDocuments = None
-    sePartDocument = None
-     
-    # Start tasks here
-    try:
-        seCommunity.OleMessageFilter.Register()
-        seApplication = seCommunity.SolidEdgeUtils.Connect(True)
-        seDocuments = seApplication.Documents
-        sePartDocument = seDocuments.Add("SolidEdge.PartDocument")
-        
-    except :
-        print("Exception")
-    finally:
-        seCommunity.OleMessageFilter.Ungister()</pre>
-<p><a href="https://github.com/Rlee13/IronPythonExamplesForSE">https://github.com/Rlee13/IronPythonExamplesForSE</a></p>
-<p>API:</p>
-<p style="padding-left: 30px;"><a href="https://docs.plm.automation.siemens.com/docs/se/2020/api/webframe.html">https://docs.plm.automation.siemens.com/docs/se/2020/api/webframe.html</a></p>
-<p style="padding-left: 30px;"><a href="https://timshyue.com/category/c/solid-edge-api/">https://timshyue.com/category/c/solid-edge-api/</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/rmcanany/SolidEdgeSpy">https://github.com/rmcanany/SolidEdgeSpy</a></p>
-<p style="padding-left: 30px;"><a href="https://oneplm.com/wp-content/uploads/SEU2015_SolidEdgeAutomation.compressed.pdf">https://oneplm.com/wp-content/uploads/SEU2015_SolidEdgeAutomation.compressed.pdf</a></p><br />Solid Edge << <a href='Solid Edge.html'>Previous</a> <a href='DLL.html'>Next</a> >> DLL</div>
+    <div id="tipue_search_content">Group << <a href='Group.html'>Previous</a> <a href='模擬場景.html'>Next</a> >> 模擬場景<br /><h1>Note</h1>
+<p>cd2023a w3 note</p>
+<ol>
+<li>星期四 17:20 補課</li>
+<li>自製 Portable Python 流程 (可以隨身, 可以啟動不同權限, 可以配置不同模組)</li>
+<li>resume 作業, 以 pdflatex -interaction=nonstopmode Resume.tex (usb 產生錯誤, 重新設定可攜 MikTeX, 後續可嘗試利用 Github Actions 對 .tex 轉檔)</li>
+<li>為何要使用 LaTeX, 可以確認內容的作者與時間, <a href="https://gitbook.tw/chapters/using-git/git-blame">https://gitbook.tw/chapters/using-git/git-blame</a></li>
+<li>pj1 兩人分組專案, 利用 Github Pages 轉出各分組網頁.</li>
+<li style="padding-left: 30px;">可採用先前的 cmsimde 設為 submodule (可配合原始 cmsimde 改版)</li>
+<li style="padding-left: 30px;">將 cmsimde 設為目錄, 可自行修改網際內容管理程式碼</li>
+<li style="padding-left: 30px;">可採用其他方法建立分組網頁</li>
+<li>各分組逐步達成課程目標 - 協同專案實習主題: <span style="background-color: #ffff00;">開發一款能在 web-based CoppeliaSim 場景中雙方或多方 (human or computer) 對玩的遊戲 (game) 產品</span>.</li>
+<li style="padding-left: 30px;"><a href="https://mde.tw/pjcopsim/content/bubbleRobTutorial.html">https://mde.tw/pjcopsim/content/bubbleRobTutorial.html</a> </li>
+</ol>
+<p></p>
+<p></p><br />Group << <a href='Group.html'>Previous</a> <a href='模擬場景.html'>Next</a> >> 模擬場景</div>
         
     <!-- footer -->
       <div class="container">
