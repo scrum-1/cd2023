@@ -344,7 +344,7 @@ print(output)
 <li>配置好可攜 MiKTeX 之後, 進入 Resume 倉儲 result 目錄執行: pdflatex -interaction=nonstopmofe Resume.tex, 就可以建立 Resume.pdf 履歷檔案.</li>
 <li>接下來請各組設法將 template 與 MiKTeX 配置為可以轉換中文版的履歷檔案.</li>
 </ol>
-<p>納入上列 Portable MiKTeX 之後的 可攜 Python 程式套件: <a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/Ecr0uG0UzJlBtwpYzztBupUBkUdQsQgmd9PWzfjTZBsB8w?e=zlb42j">wcm_portable_w2-4-miktex.7z</a></p>
+<p>納入上列 Portable MiKTeX 之後的可攜 Python 程式套件: <a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/Ecr0uG0UzJlBtwpYzztBupUBkUdQsQgmd9PWzfjTZBsB8w?e=zlb42j">wcm_portable_w2-4-miktex.7z</a></p>
 <p></p>
 <p></p>
 <p></p><h2>模擬場景</h2>
@@ -515,6 +515,7 @@ print("目前螢幕設定寬:" + str(user32.GetSystemMetrics(0)))
 print("目前螢幕設定長:" + str(user32.GetSystemMetrics(1)))</pre>
 <p>接著確認上述可攜系統已經安裝 pywin32: pip install pywin32</p>
 <p>就可以利用 python -m win32com.client.combrowse 瀏覽操作系統中的 COM 程式庫.</p>
+<p>若要將 Solid Edge Type library 轉為 .py, 執行 python -m win32com.client.makepy -i</p>
 <p>參考:</p>
 <p style="padding-left: 30px;"><a href="https://nfuedu-my.sharepoint.com/:b:/g/personal/yen_nfu_edu_tw/EZLh-WxUQalCsEevZZYg5j4BWKeqLa1CkTukFFg7yyIArA?e=nctqWp">Solid Edge Programming Guide.pdf</a> (for @nfu users only)</p><h3>Virtualization</h3>
 <p><a href="https://www.hpe.com/emea_europe/en/what-is/application-virtualization.html">https://www.hpe.com/emea_europe/en/what-is/application-virtualization.html</a></p>

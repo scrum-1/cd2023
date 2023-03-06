@@ -515,6 +515,21 @@ print("目前螢幕設定寬:" + str(user32.GetSystemMetrics(0)))
 print("目前螢幕設定長:" + str(user32.GetSystemMetrics(1)))</pre>
 <p>接著確認上述可攜系統已經安裝 pywin32: pip install pywin32</p>
 <p>就可以利用 python -m win32com.client.combrowse 瀏覽操作系統中的 COM 程式庫.</p>
+<p>若要將 Solid Edge Type library 轉為 .py, 執行 python -m win32com.client.makepy -i</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Y:\&gt;python -m win32com.client.makepy -i
+Solid Edge Geometry Type Library
+ {3E2B3BE1-F0B9-11D1-BDFD-080036B4D502}, lcid=0, major=1, minor=0
+ &gt;&gt;&gt; # Use these commands in Python code to auto generate .py support
+ &gt;&gt;&gt; from win32com.client import gencache
+ &gt;&gt;&gt; gencache.EnsureModule('{3E2B3BE1-F0B9-11D1-BDFD-080036B4D502}', 0, 1, 0)</pre>
+<p>接著利用 Python 程式執行, 列出轉為 .py 後的 Type Library 所在位置:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from win32com.client import gencache
+
+geom_type_lib = gencache.EnsureModule('{3E2B3BE1-F0B9-11D1-BDFD-080036B4D502}', 0, 1, 0)
+print(dir(geom_type_lib))
+print(repr(geom_type_lib))</pre>
+<p>執行後可以取得 Solid Edge Geometry Type Library 轉出 .py 後的檔案所在目錄:</p>
+<p>&lt;module 'win32com.gen_py.3E2B3BE1-F0B9-11D1-BDFD-080036B4D502x0x1x0' from 'C:\\Users\\pj2023\\AppData\\Local\\Temp\\gen_py\\3.11\\3E2B3BE1-F0B9-11D1-BDFD-080036B4D502x0x1x0.py'&gt;<br/><br/></p>
 <p>參考:</p>
 <p style="padding-left: 30px;"><a href="https://nfuedu-my.sharepoint.com/:b:/g/personal/yen_nfu_edu_tw/EZLh-WxUQalCsEevZZYg5j4BWKeqLa1CkTukFFg7yyIArA?e=nctqWp">Solid Edge Programming Guide.pdf</a> (for @nfu users only)</p><h3>Virtualization</h3>
 <p><a href="https://www.hpe.com/emea_europe/en/what-is/application-virtualization.html">https://www.hpe.com/emea_europe/en/what-is/application-virtualization.html</a></p>
