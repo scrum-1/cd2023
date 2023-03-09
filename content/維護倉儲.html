@@ -2,7 +2,7 @@
         <head>
         <title>cd2023</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,61 +141,21 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Free CAD << <a href='Free CAD.html'>Previous</a> <a href='SE Tutorial.html'>Next</a> >> SE Tutorial<br /><h1>Solid Edge</h1>
-<p><a href="https://solidedge.siemens.com/en/solutions/users/hobbyists-and-makers/">https://solidedge.siemens.com/en/solutions/users/hobbyists-and-makers/</a> </p>
-<p><a href="https://solidedge.siemens.com/en/free-software/overview/">https://solidedge.siemens.com/en/free-software/overview/</a> </p>
-<p>Solid Edge community edition:</p>
-<p style="padding-left: 30px;"><a href="https://www.plm.automation.siemens.com/plmapp/education/solid-edge/zh_tw/free-software/community">https://www.plm.automation.siemens.com/plmapp/education/solid-edge/zh_tw/free-software/community</a> (下載約 4GB, 安裝後佔約 8GB, 授權使用時段: 06-jul-2021 至 31-dec-2025)</p>
-<p style="padding-left: 30px;">需要 Windows 10 Enterprise or Professional (64-bit only) version 20H2 or later, Windows 11 Enterprise or Professional version 21H2 or later, <a href="https://developer.microsoft.com/en-us/microsoft-edge/webview2/">https://developer.microsoft.com/en-us/microsoft-edge/webview2/</a>, MS .Net Framework 4.8, MS Visual C++ 2015-2019 redistributable X64</p>
-<p style="padding-left: 30px;">會同時安裝 <a href="https://www.keyshot.com/">https://www.keyshot.com/</a> 11 版</p>
-<p style="padding-left: 30px;">SELicense.lic 位於 Preferences 目錄下</p>
-<p style="padding-left: 30px;">No Solid Edge Cloud Gateway</p>
-<p style="padding-left: 30px;">圖檔同教育版無法與商業版相容</p>
-<p style="padding-left: 30px;">所建立的工程圖會有浮水印</p>
-<p style="padding-left: 30px;"><a href="https://docs.sw.siemens.com/en-US/doc/246738425/PL20211001099989437.user_interface">Solid Edge Documentation</a></p>
-<p style="padding-left: 30px;"><a href="https://docs.plm.automation.siemens.com/docs/se/2020/api/webframe.html">SE2020 API Documentation</a></p>
-<p>與 NX, Onshape 比較:</p>
-<p style="padding-left: 30px;">自帶使用授權, 可在不上網情況下使用</p>
-<p style="padding-left: 30px;">安裝版 (下載 3.8GB, 安裝後佔 8GB), 適合在自己的電腦或筆電中安裝執行.</p>
-<p style="padding-left: 30px;">可攜版 (下載 4.28GB, 解開後佔 9.4GB), 適合在有防寫卡保護的電腦或虛擬主機中使用.</p>
-<p style="padding-left: 30px;">功能與 SolidWorks, Onshape 相當, 屬於中級 MCAD</p>
-<p>在安裝防寫卡的電腦中使用 Solid Edge 2023:</p>
+    <div id="tipue_search_content">Personal << <a href='Personal.html'>Previous</a> <a href='Group.html'>Next</a> >> Group<br /><h1>維護倉儲</h1>
+<p>利用 cmsimde 網際內容管理, 有兩種方法:</p>
 <ol>
-<li>因為系統並未安裝 Solid Edge, 因此可以使用已經安裝 Solid Edge 的 vdi 製作一個虛擬主機後使用</li>
-<li>配合 subst 指令, 設法在安裝 MS Edge Webview 與 VC 2015-2019 redistributable 後, import 所需的 .reg 後, 將 install 指令指向 .msi 並且設定 p_schema 與 se_license_server 等環境變數後執行 edge.exe 後啟動. 例如:</li>
+<li>將 cmsimde 設為倉儲的子模組 - git submodule add <a href="https://github.com/mdecycu/cmsimde.git">https://github.com/mdecycu/cmsimde.git</a> cmsimde</li>
+<li>取得 cmsimde 原始碼之後, 直接放入 cmsimde 目錄</li>
+<li>希望直接執行動態網站, 就必須將 cmsimde 中的 up_dir 所有檔案複製到倉儲根目錄</li>
 </ol>
-<p>start_se2023.bat</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
-set Disk=x
-subst %Disk%: "data"
-
-set se_license_server=x:\se2023\Preferences\SELicense.lic
-set p_schema=x:\se2023\Schema
-set sessionname=console
-REM set keyshot11=c:\users\public\documents\keyshot 11
-set keyshot_external_license_folder=x:\se2023\program
-
-start x:\se2023\program\edge.exe</pre>
-<p>stop_se2023.bat</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
-set Disk=x
-path=%PATH%;
-
-taskkill /IM edge.exe /F
-
-REM 終止虛擬硬碟與目錄的對應
-subst %Disk%: /D
-
-EXIT</pre>
-<p>若在設定 X 虛擬槽之後, 關閉 Solid Edge 2023 後, 尚未執行 stop_se2023.bat 之前開啟 Solid Edge 2023, 則可以使用下列 start.bat</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set se_license_server=x:\se2023\Preferences\SELicense.lic
-set p_schema=x:\se2023\Schema
-set sessionname=console
-REM set keyshot11=c:\users\public\documents\keyshot 11
-set keyshot_external_license_folder=x:\se2023\program
-
-start x:\se2023\program\edge.exe</pre>
-<br />Free CAD << <a href='Free CAD.html'>Previous</a> <a href='SE Tutorial.html'>Next</a> >> SE Tutorial</div>
+<p>維護倉儲的兩種權限:</p>
+<ol>
+<li>classic token</li>
+<li>ssh</li>
+<li>詳細設定請參考 <a href="https://mde.tw/content/Token%20and%20SSH.html">https://mde.tw/content/Token%20and%20SSH.html</a></li>
+</ol>
+<p>2a-pj1ag15 <a href="https://github.com/mdecd2023/2a-pj1ag15/tree/f0a578b743d255b61815f2cb2a0b2127957da218">目前的版本</a>, 問題是在新增 cmsimde 目錄時, 誤將 cmsimde 中的 .git 一起放入 cmsimde 目錄中.</p>
+<p>在近端將 cmsimde 目錄刪除後, 重新建立正確的 cmsimde 子目錄, 就可以修正錯誤.</p><br />Personal << <a href='Personal.html'>Previous</a> <a href='Group.html'>Next</a> >> Group</div>
         
     <!-- footer -->
       <div class="container">
