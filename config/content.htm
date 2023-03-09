@@ -96,12 +96,19 @@
 <p>resume: <a href="https://github.com/mdecd2023/resume-scrum-1">https://github.com/mdecd2023/resume-scrum-1</a></p>
 <p>2a-pj1agx: <a href="https://github.com/mdecd2023/2a-pj1agx">https://github.com/mdecd2023/2a-pj1agx</a></p>
 <p>cmsimde: <a href="https://github.com/mdecycu/cmsimde">https://github.com/mdecycu/cmsimde</a></p>
+<h2>Stud2</h2>
+<p>stud2 是一台 Ubuntu server, 讓每一個用戶透過兩個 ports 共享 server  中所設置的外部與內部 ports.</p>
+<p>其中以 9 開頭的 port 設定為內部 port,  而 8 開頭的 port 則用於外部連線.</p>
+<p>當某一用戶誤用所分配的內部 port 時, 管理者就可以透過 lsof 指令找出該用戶, 並即時加以糾正.</p>
+<p>又由於 8 開頭的外部 port 統一由管理者以 Stunnel 啟動並加以管控, 因此一般用戶產生誤用的情況只會發生在內部以 9 開頭的 port.</p>
+<p>列出 Ubuntu 中 port 使用相關資訊: lsof -i :9123</p>
+<p>lsof: list open files</p>
+<p>-i: selects the listing of files any of whose Internet address matches the address specified in i.  If no address is specified, this option selects the listing of all Internet and x.25 (HP-UX) network files.</p>
 <h2>Web-based</h2>
 <p>Front-end 使用瀏覽器, Back-end 使用 WWW server 進行機電資協同產品開發</p>
 <p><a href="https://link.springer.com/chapter/10.1007/1-84628-088-5_1">Creating Web-based Laboratory</a> (2004)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-90-481-2505-0">Web-based Control and Robotics Education</a> (2009)</p>
-<p><a href="https://link.springer.com/book/10.1007/978-1-4842-2710-7">Learning Web-based Virtual Reality</a> (2017)</p>
-<h2>Blender</h2>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-2710-7">Learning Web-based Virtual Reality</a> (2017)</p><h2>Blender</h2>
 <p><a href="https://www.blender.org/">https://www.blender.org/</a></p>
 <p>Blender history: <a href="https://www.blender.org/about/history/">https://www.blender.org/about/history/</a></p>
 <p>Blender on Github: <a href="https://github.com/blender">https://github.com/blender</a></p>
