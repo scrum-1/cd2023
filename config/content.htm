@@ -274,6 +274,7 @@
 <li><a href="https://raw.githubusercontent.com/mdecycu/4072pj1/master/LaTeX%E5%A0%B1%E5%91%8A/4072pj1.pdf">4072pj1 專題報告</a></li>
 <li><a href="https://raw.githubusercontent.com/mdecycu/4072pj3/master/project3/latex/4072pj3.pdf">4072pj3 專題報告</a></li>
 <li><a href="https://raw.githubusercontent.com/mdecycu/pj4082/main/LaTeX%E5%A0%B1%E5%91%8A/4082pj1-1.pdf">pj4082 專題報告</a></li>
+<li><a href="https://groups.google.com/g/leo-editor/c/83avo6mgHXY/m/nIKOpztyAAAJ">LaTeX to PDF using Leo Editor</a></li>
 </ol>
 <p>OpenAI Python API 程式範例:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 導入 openai
@@ -333,8 +334,7 @@ Web-based content management, collaborative product design.
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">\end{CJK*}
 \end{document}</pre>
 <p>Resume.tex 內文就可以加入中文, 並以 pdflatex -interaction=nonstopmode Resume.tex 轉為 Resume.pdf</p>
-<p></p>
-<h3>維護倉儲</h3>
+<p></p><h3>維護倉儲</h3>
 <p>利用 cmsimde 網際內容管理, 有兩種方法:</p>
 <ol>
 <li>將 cmsimde 設為倉儲的子模組 - git submodule add <a href="https://github.com/mdecycu/cmsimde.git">https://github.com/mdecycu/cmsimde.git</a> cmsimde</li>
@@ -416,9 +416,15 @@ Web-based content management, collaborative product design.
 <p><a href="https://mde.tw/pjcopsim/content/ros2Tutorial.html">https://mde.tw/pjcopsim/content/ros2Tutorial.html</a></p>
 <p><a href="https://mde.tw/pjcopsim/content/compilingCoppeliaSim.html">https://mde.tw/pjcopsim/content/compilingCoppeliaSim.html</a></p>
 <h3>BubbleRub</h3>
+<p>有關 CoppelisSim 的 Web-based 使用者手冊: <a href="https://mde.tw/content/pjcopsim.html">https://mde.tw/content/pjcopsim.html</a></p>
 <p><a href="https://mde.tw/pjcopsim/content/bubbleRobTutorial.html">https://mde.tw/pjcopsim/content/bubbleRobTutorial.html</a></p>
 <p>This tutorial will introduce quite many CoppeliaSim functionalities while designing the simple mobile robot <em>BubbleRob</em>. The CoppeliaSim scene file related to this tutorial is located in <em>scenes/tutorials/BubbleRob</em>.</p>
 <p>Since this tutorial will fly over many different aspects, make sure to also have a look at the <a href="https://mde.tw/pjcopsim/content/tutorials.html">other tutorials</a>, mainly the <a href="https://mde.tw/pjcopsim/content/buildingAModelTutorial.html">tutorial about building a simulation model</a>. First of all, freshly start CoppeliaSim. The simulator displays a default <a href="https://mde.tw/pjcopsim/content/scenes.html">scene</a>. We will start with the body of <em>BubbleRob</em>.</p>
+<p><a href="https://mde.tw/pjcopsim/content/buildingAModelTutorial.html">Building a (clean) simulation model</a>: building a nice looking, fast displaying, fast simulating and stable simulation model.</p>
+<p>Scene: </p>
+<p style="padding-left: 30px;">Compared to models, a scene can contain exactly the same type of elements, but additionally also includes following elements, specific to scenes:</p>
+<p style="padding-left: 30px;">1. The environment<br/>2. The main script<br/>3. Pages and views<br/><br/>A scene or scene image content can be seen through a viewable object associated with a view, itself contained in a page. When creating a new scene ([Menu bar --&gt; File --&gt; New Scene]), the <span style="background-color: #ffff00;">default scene</span> will contain following elements:</p>
+<p style="padding-left: 30px;">1. <span style="background-color: #ffff99;">Several camera objects</span>: cameras allow to see the scene if they are associated with a view.<br/>2. Several light objects: without a light the scene would be hardly visible. The light is used to illuminate the scene.<br/>3. <span style="background-color: #ffff99;">Several views</span>: a view is associated with a camera and displays what the camera sees. Views are contained in pages.<br/>4. <span style="background-color: #ffff99;">Several pages</span>: a page contains one or several views.<br/>4. <span style="background-color: #ffff99;">The environment</span>: the environment is composed by properties as ambient light, fog, background color, etc.<br/>6. <span style="background-color: #ffff99;">The floo</span>r: the floor is made-up by objects grouped in a model.<br/>7. <span style="background-color: #ffff99;">The default main script</span>: the default main script should allow running minimal simulations, without the need of child scripts. A child script copied into the scene at a later stage will then also be automatically executed (called by the main script) if it is associated with a scene object.<br/><br/>Scenes can be opened (loaded) with [Menu bar --&gt; File --&gt; Open Scene...] and saved with [Menu bar --&gt; File --&gt; Save Scene] or [Menu Bar --&gt; File --&gt; Save Scene as]. Scene files ("*.ttt"-files) also support drag and drop operations between the explorer window and the application window. Scene files can also be double-clicked, in which case they will launch the CoppeliaSim application and be opened.</p>
 <h4>BubbleRob body</h4>
 <p>We add a primitive sphere of diameter 0.2 to the scene with [Menu bar --&gt; Add --&gt; Primitive shape --&gt; Sphere]. We adjust the X-size item to 0.2, then click OK. The created sphere will appear in the <a href="https://mde.tw/pjcopsim/content/layerSelectionDialog.html">visibility layer</a> 1 by default, and be <a href="https://mde.tw/pjcopsim/content/designingDynamicSimulations.html#staticAndRespondable">dynamic and respondable</a> (since we kept the item Create dynamic and respondable shape enabled). This means that <em>BubbleRob's</em> body will be falling and able to react to collisions with other respondable shapes (i.e. simulated by the physics engine). We can see this is the <a href="https://mde.tw/pjcopsim/content/shapeDynamicsProperties.html">shape dynamics properties</a>: items Body is respondable and Body is dynamic are enabled. We start the simulation (via the toolbar button, or by pressing &lt;control-space&gt; in the scene window), and copy-and-paste the created sphere (with [Menu bar --&gt; Edit --&gt; Copy selected objects] then [Menu bar --&gt; Edit -&gt; Paste buffer], or with &lt;control-c&gt; then &lt;control-v&gt;): the two spheres will react to collision and roll away. We stop the simulation: the duplicated sphere will automatically be removed. This default behaviour can be modified in the <a href="https://mde.tw/pjcopsim/content/simulationPropertiesDialog.html">simulation dialog</a>.</p>
 <p>We also want the <em>BubbleRob's</em> body to by usable by the other calculation modules (e.g. <a href="https://mde.tw/pjcopsim/content/distanceCalculation.html">distance calculation</a>). For that reason, we enable <a href="https://mde.tw/pjcopsim/content/collidableObjects.html">Collidable</a>, <a href="https://mde.tw/pjcopsim/content/measurableObjects.html">Measurable</a> and <a href="https://mde.tw/pjcopsim/content/detectableObjects.html">Detectable</a> in the <a href="https://mde.tw/pjcopsim/content/commonPropertiesDialog.html">object common properties</a> for that shape, if not already enabled. If we wanted, we could now also change the visual appearance of our sphere in the <a href="https://mde.tw/pjcopsim/content/shapeProperties.html">shape properties</a>.</p>
@@ -522,8 +528,7 @@ function sysCall_cleanup()
     simUI.destroy(ui)
 end</pre>
 <p>We run the simulation. <em>BubbleRob</em> now moves forward while trying to avoid obstacles (in a very basic fashion). While the simulation is still running, change <em>BubbleRob's</em> velocity, and copy/paste it a few times. Also try to scale a few of them while the simulation is still running. Be aware that the minimum distance calculation functionality might be heavily slowing down the simulation, depending on the environment.</p>
-<p>Using a script to control a robot or model is only one way of doing. CoppeliaSim offers many different ways (also combined), have a look at the <a href="https://mde.tw/pjcopsim/content/externalControllerTutorial.html">external controller tutorial</a>.</p>
-<h1>NX2027</h1>
+<p>Using a script to control a robot or model is only one way of doing. CoppeliaSim offers many different ways (also combined), have a look at the <a href="https://mde.tw/pjcopsim/content/externalControllerTutorial.html">external controller tutorial</a>.</p><h1>NX2027</h1>
 <p><a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/EclS-NMhqJ9JvCa-pIQ_jMsBQB1tipr_Zgc8kT8ha1kMtg?e=RvnCpR">NX2027.3401_lite_cad2022.7z</a> for @nfu users only</p>
 <p>目前 NX 最新版本為 NX2212.3001 (下載檔案為 12.75 GB)</p>
 <p style="padding-left: 30px;"><a href="https://docs.sw.siemens.com/en-US/doc/209349590/PL20220512394070742.whatsnew/">What's new in NX2212?</a></p>
