@@ -2,7 +2,7 @@
         <head>
         <title>cd2023</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H1">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,15 +141,13 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">pj1 << <a href='pj1.html'>Previous</a> <a href='Web-based.html'>Next</a> >> Web-based<br /><h1>Stud2</h1>
-<p>stud2 是一台 Ubuntu server, 讓每一個用戶透過兩個 ports 共享 server  中所設置的外部與內部 ports.</p>
-<p>其中以 9 開頭的 port 設定為內部 port,  而 8 開頭的 port 則用於外部連線.</p>
-<p>當某一用戶誤用所分配的內部 port 時, 管理者就可以透過 lsof 指令找出該用戶, 並即時加以糾正.</p>
-<p>又由於 8 開頭的外部 port 統一由管理者以 Stunnel 啟動並加以管控, 因此一般用戶產生誤用的情況只會發生在內部以 9 開頭的 port.</p>
-<p>列出 Ubuntu 中 port 使用相關資訊: lsof -i :9123</p>
-<p>lsof: list open files</p>
-<p>-i: selects the listing of files any of whose Internet address matches the address specified in i.  If no address is specified, this option selects the listing of all Internet and x.25 (HP-UX) network files.</p>
-<br />pj1 << <a href='pj1.html'>Previous</a> <a href='Web-based.html'>Next</a> >> Web-based</div>
+    <div id="tipue_search_content">FreeCAD << <a href='FreeCAD.html'>Previous</a> <a href='CoppeliaSim.html'>Next</a> >> CoppeliaSim<br /><h1>LaTeX</h1>
+<p>在協同產品設計流程中, 各種資料的整理若採分散式版次管理模式(cd2023 將介紹 git 與 <a href="https://www2.fossil-scm.org">Fossil SCM</a> 等兩種工具), 將可有效掌握各組員在設計過程中參與專案的角色與所貢獻的內容. 而此一協同設計架構也能用於編寫簡報或專案報告. 在此將採用 LaTeX 編寫設計過程中的各種技術文件及導引.</p>
+<h4>以 cmsimde 建立 .tex 協同設計文字檔案:</h4>
+<p>在 cmsimde 網際內容管理系統中, Python 可以利用 bs4 將 content 目錄中的 <a href="https://stackoverflow.com/questions/14694482/converting-html-to-text-with-python">html 轉為 text</a>, 之後若要放入 .tex 運用, 則必須再進行檔案編修.</p>
+<p>另外, 則可直接透過 cmsimde 的 editor 寫出所需要的 latex/file.tex, 也就是直接利用網際編輯器處理 .tex 檔案內容, 並且配合 images 中的圖檔, 以 Github Actions 轉為 .pdf</p>
+<p>協同分組報告設定檔案: <a href="https://mdecd2023.github.io/resume-scrum-1/downloads/latex_cd_report_using_github_actions.7z">https://mdecd2023.github.io/resume-scrum-1/downloads/latex_cd_report_using_github_actions.7z </a></p>
+<p></p><br />FreeCAD << <a href='FreeCAD.html'>Previous</a> <a href='CoppeliaSim.html'>Next</a> >> CoppeliaSim</div>
         
     <!-- footer -->
       <div class="container">
