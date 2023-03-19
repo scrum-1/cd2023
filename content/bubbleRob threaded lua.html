@@ -141,30 +141,71 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Group << <a href='Group.html'>Previous</a> <a href='Note.html'>Next</a> >> Note<br /><h1>pj1bgz</h1>
-<p><a href="https://github.com/mdecd2023/2b-pj1bgz">https://github.com/mdecd2023/2b-pj1bgz</a></p>
-<p><a href="https://mdecd2023.github.io/2b-pj1bgz">https://mdecd2023.github.io/2b-pj1bgz</a></p>
-<p>利用上述倉儲, 以 cmsimde 單獨作為目錄, 以 SSH 協定取得管理權限, 並且納入協同 LaTeX 分組報告編寫機制的教學影片: <a href="https://nfuedu-my.sharepoint.com/:v:/g/personal/yen_nfu_edu_tw/EXuWyey2z9FOglDgoPd3ZEEBZk3fncyhj8BuQDrHpTOOuA?e=gsi6kz">2b-pj1bgz 分組倉儲 SSH 與 LaTeX 分組報告製作教學.mp4</a></p>
-<p>利用 cmsimde 建立網頁:</p>
-<ol>
-<li>submodule - 比較方便跟官網版本同步 - cd cmsimde, git pull origin master</li>
-<li><span style="background-color: #ffff00;">單獨作為目錄</span> - 可以自行維護程式碼 - 不可納入 <a href="https://github.com/mdecycu/cmsimde/archive/refs/heads/master.zip">cmsimde</a> 的版本</li>
-<li>其他方法</li>
-</ol>
-<p>維護網頁(可以透過 token 或 SSH 取得維護權限):</p>
-<ol>
-<li><span style="background-color: #ffff00;">localhost</span> - 將倉儲 git clone 至近端, 然後以符合需求的可攜或安裝 Python 環境啟動 cmsimde/wsgi.py (可以下載 <a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/Ecr0uG0UzJlBtwpYzztBupUBkUdQsQgmd9PWzfjTZBsB8w?e=zlb42j">wcm_portable_w2-4-miktex.7z</a>)</li>
-<li>Replit - 可直接利用 web-based 維護動態與靜態網站內容 (給定的免費資源可能不符合使用)</li>
-<li>自行安裝配置類似 Replit 的服務 (<span style="background-color: #ffff00;">stud2.cycu.org</span>)</li>
-</ol>
-<p>針對 github 帳號尚未登錄至 <a href="https://github.com/mdecycu/studlist">https://github.com/mdecycu/studlist</a> 倉儲者, 可以利用 pull requests 進入更改流程:</p>
-<ol>
-<li>登入個人的 github 帳號後</li>
-<li>連結至 <a href="https://github.com/mdecycu/studlist">https://github.com/mdecycu/studlist</a> 後, 以 fork 將此倉儲複刻到自己的帳號下</li>
-<li>納入自己學號後的 github 帳號後, 以 pull requests 要求管理者將改版內容檢查後合併</li>
-</ol>
-<p></p>
-<br />Group << <a href='Group.html'>Previous</a> <a href='Note.html'>Next</a> >> Note</div>
+    <div id="tipue_search_content">Scripts << <a href='Scripts.html'>Previous</a> <br /><h1>bubbleRob threaded lua</h1>
+<p>Lua local variables and blocks: <a href="https://www.lua.org/pil/4.2.html">https://www.lua.org/pil/4.2.html</a></p>
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
+         
+    -- This is executed exactly once, the first time this script is executed
+    bubbleRobBase=sim.getObject('.') -- this is bubbleRob's handle
+    leftMotor=sim.getObject("./leftMotor") -- Handle of the left motor
+    rightMotor=sim.getObject("./rightMotor") -- Handle of the right motor
+    noseSensor=sim.getObject("./sensingNose") -- Handle of the proximity sensor
+    minMaxSpeed={50*math.pi/180,300*math.pi/180} -- Min and max speeds for each motor
+    backUntilTime=-1 -- Tells whether bubbleRob is in forward or backward mode
+    robotCollection=sim.createCollection(0)
+    sim.addItemToCollection(robotCollection,sim.handle_tree,bubbleRobBase,0)
+    distanceSegment=sim.addDrawingObject(sim.drawing_lines,4,0,-1,1,{0,1,0})
+    robotTrace=sim.addDrawingObject(sim.drawing_linestrip+sim.drawing_cyclic,2,0,-1,200,{1,1,0},nil,nil,{1,1,0})
+    graph=sim.getObject('./graph')
+    distStream=sim.addGraphStream(graph,'bubbleRob clearance','m',0,{1,0,0})
+    -- Create the custom UI:
+    xml = '&lt;ui title="'..sim.getObjectAlias(bubbleRobBase,1)..' speed" closeable="false" resizeable="false" activate="false"&gt;'..[[
+                &lt;hslider minimum="0" maximum="100" on-change="speedChange_callback" id="1"/&gt;
+            &lt;label text="" style="* {margin-left: 300px;}"/&gt;
+        &lt;/ui&gt;
+        ]]
+    ui=simUI.create(xml)
+    speed=(minMaxSpeed[1]+minMaxSpeed[2])*0.5
+    simUI.setSliderValue(ui,1,100*(speed-minMaxSpeed[1])/(minMaxSpeed[2]-minMaxSpeed[1]))
+    
+end
+
+function sysCall_sensing()
+    local result,distData=sim.checkDistance(robotCollection,sim.handle_all)
+    if result&gt;0 then
+        sim.addDrawingObjectItem(distanceSegment,nil)
+        sim.addDrawingObjectItem(distanceSegment,distData)
+        sim.setGraphStreamValue(graph,distStream,distData[7])
+    end
+    local p=sim.getObjectPosition(bubbleRobBase,sim.handle_world)
+    sim.addDrawingObjectItem(robotTrace,p)
+end 
+
+function speedChange_callback(ui,id,newVal)
+    speed=minMaxSpeed[1]+(minMaxSpeed[2]-minMaxSpeed[1])*newVal/100
+end
+
+function sysCall_actuation() 
+    result=sim.readProximitySensor(noseSensor) -- Read the proximity sensor
+    -- If we detected something, we set the backward mode:
+    if (result&gt;0) then backUntilTime=sim.getSimulationTime()+4 end 
+
+    if (backUntilTime&lt;sim.getSimulationTime()) then
+        -- When in forward mode, we simply move forward at the desired speed
+        sim.setJointTargetVelocity(leftMotor,speed)
+        sim.setJointTargetVelocity(rightMotor,speed)
+    else
+        -- When in backward mode, we simply backup in a curve at reduced speed
+        sim.setJointTargetVelocity(leftMotor,-speed/2)
+        sim.setJointTargetVelocity(rightMotor,-speed/8)
+    end
+end
+
+function sysCall_cleanup() 
+    simUI.destroy(ui)
+end 
+</pre>
+<p></p><br />Scripts << <a href='Scripts.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">

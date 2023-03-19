@@ -747,6 +747,9 @@ Draw (mesh);</pre>
 <hr/>
 <h4>Simulation - first run</h4>
 <p>We run the simulation and notice that the robot is falling backwards. We are still missing a third contact point to the floor. We now add a small slider (or caster). In a new scene we and add a pure primitive sphere with diameter 0.05 and make the sphere <a href="https://mde.tw/pjcopsim/content/collidableObjects.html">Collidable</a>, <a href="https://mde.tw/pjcopsim/content/measurableObjects.html">Measurable</a> and <a href="https://mde.tw/pjcopsim/content/detectableObjects.html">Detectable</a> (if not already enabled), then rename it to <em>slider</em>. We set the Material to <em>noFrictionMaterial </em>in the <a href="https://mde.tw/pjcopsim/content/shapeDynamicsProperties.html">shape dynamics properties</a>. To rigidly link the slider with the rest of the robot, we add a<a href="https://mde.tw/pjcopsim/content/forceSensors.html"> force sensor object</a> with [Menu bar --&gt; Add --&gt; Force sensor]. We rename it to <em>connection</em> and shift it up by 0.05. We attach the slider to the force sensor, then copy both objects, switch back to scene 1 and paste them. We then shift the force sensor by -0.07 along the absolute X-axis, then attach it to the robot body. If we run the simulation now, we can notice that the slider is slightly moving in relation to the robot body: this is because both objects (i.e. <em>slider</em> and <em>bubbleRob</em>) are colliding with each other. To avoid strange effects during dynamics simulation, we have to inform CoppeliaSim that both objects do not mutually collide, and we do this in following way: in the <a href="https://mde.tw/pjcopsim/content/shapeDynamicsProperties.html">shape dynamics properties</a>, for <em>slider</em> we set the local respondable mask to 00001111, and for <em>bubbleRob</em>, we set the local respondable mask to 11110000. If we run the simulation again, we can notice that both objects do not interfere anymore.</p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EVkZ050kg0RCpr4zm1OZRy8BqKDGfmpcIRsy3a0L1dxfDA?e=Ablduu">bubbleRob1.ttt</a> (velocity 100 for both wheel)</p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EfU39oiqUe9PlGEDOVVQGCIBsCDzfnwiDFhLE9tfNP7HRA?e=ZVK16Q">bubbleRob1_zero_vel.ttt</a></p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EbDmeZKI6nVLpKiIPFbSaGcB9lRpXUqiJ8P7NwMi5a-xlg?e=dIEA4x">buttleRob1_threaded_lua.ttt</a></p>
 <h4>Run the simuation again</h4>
 <p>We run the simulation again and notice that <em>BubbleRob</em> slightly moves, even with locked motor. We also try to run the simulation with different physics engines: the result will be different. Stability of dynamic simulations is tightly linked to masses and inertias of the involved non-static shapes. For an explanation of this effect, make sure to carefully read <a href="https://mde.tw/pjcopsim/content/designingDynamicSimulations.html#masses">this</a> and <a href="https://mde.tw/pjcopsim/content/designingDynamicSimulations.html#inertias">that</a> sections. We now try to correct for that undesired effect. We select the two wheels and the slider, and in the shape dynamics dialog we click three times M=M*2 (for selection). The effect is that all selected shapes will have their masses multiplied by 8. We do the same with the inertias of the 3 selected shapes, then run the simulation again: stability has improved. In the joint dynamics dialog, we set the Target velocity to 50 for both motors. We run the simulation: <em>BubbleRob</em> now moves forward and eventually falls off the floor. We reset the Target velocity item to zero for both motors.</p>
 <hr/>
@@ -833,8 +836,7 @@ function sysCall_cleanup()
     simUI.destroy(ui)
 end</pre>
 <p>We run the simulation. <em>BubbleRob</em> now moves forward while trying to avoid obstacles (in a very basic fashion). While the simulation is still running, change <em>BubbleRob's</em> velocity, and copy/paste it a few times. Also try to scale a few of them while the simulation is still running. Be aware that the minimum distance calculation functionality might be heavily slowing down the simulation, depending on the environment.</p>
-<p>Using a script to control a robot or model is only one way of doing. CoppeliaSim offers many different ways (also combined), have a look at the <a href="https://mde.tw/pjcopsim/content/externalControllerTutorial.html">external controller tutorial</a>.</p>
-<h3>Settings</h3>
+<p>Using a script to control a robot or model is only one way of doing. CoppeliaSim offers many different ways (also combined), have a look at the <a href="https://mde.tw/pjcopsim/content/externalControllerTutorial.html">external controller tutorial</a>.</p><h3>Settings</h3>
 <h4>User settings</h4>
 <p>Some values and settings in CoppeliaSim are not dependent on a <a href="https://mde.tw/pjcopsim/content/scenes.html">scene</a> or <a href="https://mde.tw/pjcopsim/content/models.html">model</a>, but rather dependent on the user. The user settings dialog (which partially reflects the content of file <em>system/usrset.txt</em>) can be accessed with [Menu bar --&gt; Tools --&gt; Settings] or by clicking following toolbar button:</p>
 <p align="center"><img src="https://mde.tw/pjcopsim/images/settings1.jpg"/></p>
@@ -937,6 +939,8 @@ end</pre>
 <li>Model content acknowledgments/Info: information related to a model. It is always good practice to acknowledge the original author of a model, or imported mesh. When a model that contains acknowledgment information is opened, it will automatically display that information.</li>
 </ul>
 <p></p><h3>Collidable</h3>
+<p>For bubbleRob:</p>
+<p style="padding-left: 30px;">to inform CoppeliaSim that both objects do not mutually collide, and we do this in following way: in the <span style="background-color: #ffff00;">shape dynamics properties</span>, for slider we set the local respondable mask to 00001111, and for bubbleRob, we set the local respondable mask to 11110000.</p>
 <h4>Collidable objects</h4>
 <p>Collidable objects are <a href="https://mde.tw/pjcopsim/content/objects.html">objects</a> that can be tested for <a href="https://mde.tw/pjcopsim/content/collisionDetection.html">collision</a> against other collidable objects, i.e. that will register a collision state. This does not mean that they will respond to collision (i.e. <a href="https://mde.tw/pjcopsim/content/designingDynamicSimulations.html#staticAndRespondable">respondable</a>), which is something different. Collidable objects include:</p>
 <p></p>
@@ -1343,7 +1347,7 @@ end</pre>
 <p>Never have a static respondable shape on top of a dynamic item. Static means the shape's trajectory cannot be influenced by any collision, but if at the same time it is respondable, this means that it can itself influence other shapes' trajectories via collision. The simulation result would be unpredictable.</p>
 <h2>Scripts</h2>
 <h4>Scripts</h4>
-<p><a href="/get_page/downloads/lua/index.html">lua</a></p>
+<p><a href="https://mde.tw/cd2023/downloads/lua/">lua</a></p>
 <p>CoppeliaSim is a highly customizable simulator: almost every step of a <a href="https://mde.tw/pjcopsim/content/simulation.html">simulation</a> is user-defined. Additionally, the simulator itself can also be customized to a large extent. This flexibility is allowed through an integrated script interpreter (<a href="http://www.lua.org">Lua</a>) and an external script interpreter (<a href="http://www.python.org">Python</a>). Both operate in almost the same fashion, <a href="https://mde.tw/pjcopsim/content/luaPythonDifferences.html">except for small differences</a>. For more information on Lua, refer to the <a href="https://mde.tw/pjcopsim/content/luaCrashCourse.html">Lua crash course</a> section and the <a href="http://www.lua.org">online documentation</a>.</p>
 <p align="center"><img src="https://mde.tw/pjcopsim/images/luaAndPythonLogo.jpg"/></p>
 <p class="imageLabel">[Lua and Python logo]</p>
@@ -1355,3 +1359,68 @@ end</pre>
 <p></p>
 <p>Scripts are invoked via <a href="https://mde.tw/pjcopsim/content/callbackFunctions.html">callback functions</a> by CoppeliaSim, and follow a <a href="https://mde.tw/pjcopsim/content/scriptExecution.html">specific execution order</a>. They can <a href="https://mde.tw/pjcopsim/content/threadedAndNonThreadedCode.html">run threaded or non-threaded</a>.</p>
 <p>CoppeliaSim scripts may be published under any license.</p>
+<h3>bubbleRob threaded lua</h3>
+<p>Lua local variables and blocks: <a href="https://www.lua.org/pil/4.2.html">https://www.lua.org/pil/4.2.html</a></p>
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
+         
+    -- This is executed exactly once, the first time this script is executed
+    bubbleRobBase=sim.getObject('.') -- this is bubbleRob's handle
+    leftMotor=sim.getObject("./leftMotor") -- Handle of the left motor
+    rightMotor=sim.getObject("./rightMotor") -- Handle of the right motor
+    noseSensor=sim.getObject("./sensingNose") -- Handle of the proximity sensor
+    minMaxSpeed={50*math.pi/180,300*math.pi/180} -- Min and max speeds for each motor
+    backUntilTime=-1 -- Tells whether bubbleRob is in forward or backward mode
+    robotCollection=sim.createCollection(0)
+    sim.addItemToCollection(robotCollection,sim.handle_tree,bubbleRobBase,0)
+    distanceSegment=sim.addDrawingObject(sim.drawing_lines,4,0,-1,1,{0,1,0})
+    robotTrace=sim.addDrawingObject(sim.drawing_linestrip+sim.drawing_cyclic,2,0,-1,200,{1,1,0},nil,nil,{1,1,0})
+    graph=sim.getObject('./graph')
+    distStream=sim.addGraphStream(graph,'bubbleRob clearance','m',0,{1,0,0})
+    -- Create the custom UI:
+    xml = '&lt;ui title="'..sim.getObjectAlias(bubbleRobBase,1)..' speed" closeable="false" resizeable="false" activate="false"&gt;'..[[
+                &lt;hslider minimum="0" maximum="100" on-change="speedChange_callback" id="1"/&gt;
+            &lt;label text="" style="* {margin-left: 300px;}"/&gt;
+        &lt;/ui&gt;
+        ]]
+    ui=simUI.create(xml)
+    speed=(minMaxSpeed[1]+minMaxSpeed[2])*0.5
+    simUI.setSliderValue(ui,1,100*(speed-minMaxSpeed[1])/(minMaxSpeed[2]-minMaxSpeed[1]))
+    
+end
+
+function sysCall_sensing()
+    local result,distData=sim.checkDistance(robotCollection,sim.handle_all)
+    if result&gt;0 then
+        sim.addDrawingObjectItem(distanceSegment,nil)
+        sim.addDrawingObjectItem(distanceSegment,distData)
+        sim.setGraphStreamValue(graph,distStream,distData[7])
+    end
+    local p=sim.getObjectPosition(bubbleRobBase,sim.handle_world)
+    sim.addDrawingObjectItem(robotTrace,p)
+end 
+
+function speedChange_callback(ui,id,newVal)
+    speed=minMaxSpeed[1]+(minMaxSpeed[2]-minMaxSpeed[1])*newVal/100
+end
+
+function sysCall_actuation() 
+    result=sim.readProximitySensor(noseSensor) -- Read the proximity sensor
+    -- If we detected something, we set the backward mode:
+    if (result&gt;0) then backUntilTime=sim.getSimulationTime()+4 end 
+
+    if (backUntilTime&lt;sim.getSimulationTime()) then
+        -- When in forward mode, we simply move forward at the desired speed
+        sim.setJointTargetVelocity(leftMotor,speed)
+        sim.setJointTargetVelocity(rightMotor,speed)
+    else
+        -- When in backward mode, we simply backup in a curve at reduced speed
+        sim.setJointTargetVelocity(leftMotor,-speed/2)
+        sim.setJointTargetVelocity(rightMotor,-speed/8)
+    end
+end
+
+function sysCall_cleanup() 
+    simUI.destroy(ui)
+end 
+</pre>
+<p></p>
