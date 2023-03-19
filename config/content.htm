@@ -1297,7 +1297,7 @@ end</pre>
 <p>Use a simple hierarchical structure. When building a model that is meant to be simulated dynamically, attach all non-dynamic objects to the dynamic objects (non-static shapes and dynamically enabled joints). Above's wheeled robot model is illustrated in following figure:</p>
 <p align="center"><img src="https://mde.tw/pjcopsim/images/dynamicsDesign11.jpg"/></p>
 <p class="imageLabel">[Dynamic elements in a robot model]</p>
-<p><br/> </p>
+<p></p>
 <h4><a name="modelBaseSelection"></a>Design consideration 5</h4>
 <p>Carefully chose the model base object. When building a dynamic <a href="https://mde.tw/pjcopsim/content/models.html">model</a>, actually also when building a static model, always carefulls consider what role the model will be playing. Will it be used on its own? Can it be built on top of another model or object? Or can it accept other models or objects to be built on top of it? Consider following example:</p>
 <p>You have created a model of a mobile robot. You have also created a model of a gripper. Clearly you want to be able to easily attach the gripper model on top of the robot model. The other way round will never make sense (attaching the robot model on top of the gripper model). You might also want to use the robot model and the gripper model on their own. Following is the view of the <a href="https://mde.tw/pjcopsim/content/userInterface.html#SceneHierarchy">scene hierarchy</a> of a possible model definition:</p>
@@ -1341,3 +1341,17 @@ end</pre>
 <p></p>
 <h4><a name="dynamicStaticRespondable"></a>Design consideration 11</h4>
 <p>Never have a static respondable shape on top of a dynamic item. Static means the shape's trajectory cannot be influenced by any collision, but if at the same time it is respondable, this means that it can itself influence other shapes' trajectories via collision. The simulation result would be unpredictable.</p>
+<h2>Scripts</h2>
+<h4>Scripts</h4>
+<p><a href="https://mde.tw/cd2023/downloads/lua/">lua</a></p>
+<p>CoppeliaSim is a highly customizable simulator: almost every step of a <a href="https://mde.tw/pjcopsim/content/simulation.html">simulation</a> is user-defined. Additionally, the simulator itself can also be customized to a large extent. This flexibility is allowed through an integrated script interpreter (<a href="http://www.lua.org">Lua</a>) and an external script interpreter (<a href="http://www.python.org">Python</a>). Both operate in almost the same fashion, <a href="https://mde.tw/pjcopsim/content/luaPythonDifferences.html">except for small differences</a>. For more information on Lua, refer to the <a href="https://mde.tw/pjcopsim/content/luaCrashCourse.html">Lua crash course</a> section and the <a href="http://www.lua.org">online documentation</a>.</p>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/luaAndPythonLogo.jpg"/></p>
+<p class="imageLabel">[Lua and Python logo]</p>
+<p></p>
+<p>CoppeliaSim extends Lua's and Python's API function and adds CoppeliaSim specific commands that can be recognized by their <em>sim</em>-prefixes (e.g. <a href="https://mde.tw/pjcopsim/content/regularApi/simGetObjectPosition.html">sim.getObjectPosition</a>). For a list of all CoppeliaSim specific API functions, refer to the <a href="https://mde.tw/pjcopsim/content/apiFunctions.html">regular API</a>. New, customized API functions can also be registered from a <a href="https://mde.tw/pjcopsim/content/plugins.html">plugin</a>. Refer to the <a href="https://mde.tw/pjcopsim/content/apiFunctions.html#customizingLuaFunctions">related API-functions</a> for more information.</p>
+<p>Several types of scripts are supported in CoppeliaSim: <a href="https://mde.tw/pjcopsim/content/sandboxScript.html">the sandbox script</a>, <a href="https://mde.tw/pjcopsim/content/addOns.html">add-ons</a>, and <a href="https://mde.tw/pjcopsim/content/embeddedScripts.html">embedded scripts</a> (themselves composed of a <a href="https://mde.tw/pjcopsim/content/mainScript.html">main script</a>, <a href="https://mde.tw/pjcopsim/content/childScripts.html">child scripts</a> and <a href="https://mde.tw/pjcopsim/content/customizationScripts.html">customization scripts</a>). An embedded script is a script that is embedded in a <a href="https://mde.tw/pjcopsim/content/scenes.html">scene</a> (or <a href="https://mde.tw/pjcopsim/content/models.html">model</a>), i.e. a script that is part of the scene and that will be saved and loaded together with the rest of the scene (or model). On the other hand, the sandbox script and add-ons are not associated with any specific scene, model or object, and will run across all scenes in a similar way.</p>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/embeddedScripts.jpg"/></p>
+<p class="imageLabel">[Script types]</p>
+<p></p>
+<p>Scripts are invoked via <a href="https://mde.tw/pjcopsim/content/callbackFunctions.html">callback functions</a> by CoppeliaSim, and follow a <a href="https://mde.tw/pjcopsim/content/scriptExecution.html">specific execution order</a>. They can <a href="https://mde.tw/pjcopsim/content/threadedAndNonThreadedCode.html">run threaded or non-threaded</a>.</p>
+<p>CoppeliaSim scripts may be published under any license.</p>

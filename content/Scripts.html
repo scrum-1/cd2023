@@ -2,7 +2,7 @@
         <head>
         <title>cd2023</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,23 +141,20 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Note << <a href='Note.html'>Previous</a> <a href='模擬場景.html'>Next</a> >> 模擬場景<br /><h1>評分</h1>
-<p>Personal resume:</p>
-<p style="padding-left: 30px;">請說明個人在 resume 個人作業分別完成的項目, 如何展示?</p>
-<p>w3:</p>
-<p style="padding-left: 30px;">第三週結束時仍<span style="background-color: #ffff00;">無分組網站</span>之分組:</p>
-<p style="padding-left: 30px;">2a:</p>
-<p style="padding-left: 60px;">ag3, ag4, ag7, ag8, ag9, ag12, ag14, ag15, ag16, ag18, ag19, ag20</p>
-<p style="padding-left: 30px;">2b</p>
-<p style="padding-left: 60px;">bg3, bg8, bg9, bg28, bg29, bg30, bg31</p>
-<p>w4:</p>
-<p style="padding-left: 30px;">BubbleRub tutorial 製作結果與心得 presentation (以 Web-based 方式發表):</p>
-<p style="padding-left: 30px;">Tutorial 議題: Why? How? What? (主題為何? 如何協同? 完成內容展示 - in person or in webpages)</p>
+    <div id="tipue_search_content">Dynamic simulation << <a href='Dynamic simulation.html'>Previous</a> <br /><h1>Scripts</h1>
+<h4>Scripts</h4>
+<p><a href="https://mde.tw/cd2023/downloads/lua/">lua</a></p>
+<p>CoppeliaSim is a highly customizable simulator: almost every step of a <a href="https://mde.tw/pjcopsim/content/simulation.html">simulation</a> is user-defined. Additionally, the simulator itself can also be customized to a large extent. This flexibility is allowed through an integrated script interpreter (<a href="http://www.lua.org">Lua</a>) and an external script interpreter (<a href="http://www.python.org">Python</a>). Both operate in almost the same fashion, <a href="https://mde.tw/pjcopsim/content/luaPythonDifferences.html">except for small differences</a>. For more information on Lua, refer to the <a href="https://mde.tw/pjcopsim/content/luaCrashCourse.html">Lua crash course</a> section and the <a href="http://www.lua.org">online documentation</a>.</p>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/luaAndPythonLogo.jpg"/></p>
+<p class="imageLabel">[Lua and Python logo]</p>
 <p></p>
+<p>CoppeliaSim extends Lua's and Python's API function and adds CoppeliaSim specific commands that can be recognized by their <em>sim</em>-prefixes (e.g. <a href="https://mde.tw/pjcopsim/content/regularApi/simGetObjectPosition.html">sim.getObjectPosition</a>). For a list of all CoppeliaSim specific API functions, refer to the <a href="https://mde.tw/pjcopsim/content/apiFunctions.html">regular API</a>. New, customized API functions can also be registered from a <a href="https://mde.tw/pjcopsim/content/plugins.html">plugin</a>. Refer to the <a href="https://mde.tw/pjcopsim/content/apiFunctions.html#customizingLuaFunctions">related API-functions</a> for more information.</p>
+<p>Several types of scripts are supported in CoppeliaSim: <a href="https://mde.tw/pjcopsim/content/sandboxScript.html">the sandbox script</a>, <a href="https://mde.tw/pjcopsim/content/addOns.html">add-ons</a>, and <a href="https://mde.tw/pjcopsim/content/embeddedScripts.html">embedded scripts</a> (themselves composed of a <a href="https://mde.tw/pjcopsim/content/mainScript.html">main script</a>, <a href="https://mde.tw/pjcopsim/content/childScripts.html">child scripts</a> and <a href="https://mde.tw/pjcopsim/content/customizationScripts.html">customization scripts</a>). An embedded script is a script that is embedded in a <a href="https://mde.tw/pjcopsim/content/scenes.html">scene</a> (or <a href="https://mde.tw/pjcopsim/content/models.html">model</a>), i.e. a script that is part of the scene and that will be saved and loaded together with the rest of the scene (or model). On the other hand, the sandbox script and add-ons are not associated with any specific scene, model or object, and will run across all scenes in a similar way.</p>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/embeddedScripts.jpg"/></p>
+<p class="imageLabel">[Script types]</p>
 <p></p>
-<p></p>
-<p></p>
-<br />Note << <a href='Note.html'>Previous</a> <a href='模擬場景.html'>Next</a> >> 模擬場景</div>
+<p>Scripts are invoked via <a href="https://mde.tw/pjcopsim/content/callbackFunctions.html">callback functions</a> by CoppeliaSim, and follow a <a href="https://mde.tw/pjcopsim/content/scriptExecution.html">specific execution order</a>. They can <a href="https://mde.tw/pjcopsim/content/threadedAndNonThreadedCode.html">run threaded or non-threaded</a>.</p>
+<p>CoppeliaSim scripts may be published under any license.</p><br />Dynamic simulation << <a href='Dynamic simulation.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">
