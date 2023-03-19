@@ -2,7 +2,7 @@
         <head>
         <title>cd2023</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,9 +141,23 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">NX2027 << <a href='NX2027.html'>Previous</a> <a href='Onshape.html'>Next</a> >> Onshape<br /><h1>NX Server</h1>
-<p>Web based NX2027 Server</p>
-<br />NX2027 << <a href='NX2027.html'>Previous</a> <a href='Onshape.html'>Next</a> >> Onshape</div>
+    <div id="tipue_search_content">Joints << <a href='Joints.html'>Previous</a> <a href='Force sensor.html'>Next</a> >> Force sensor<br /><h1>Joint properties</h1>
+<h4>Joint dynamics properties</h4>
+<p>The joint dynamics properties are part of the <a href="https://mde.tw/pjcopsim/content/jointProperties.html">joint properties</a>. Its dialog displays the dynamics settings and parameters of the last selected <a href="https://mde.tw/pjcopsim/content/joints.html">joint</a>. If no joint is selected, or the joint is not dynamic, then the dialog is inactive. If more than one joint is selected, then some parameters can be copied from the last selected joint to the other selected joints:</p>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/jointDynamicsProperties1.jpg"/></p>
+<p class="imageLabel">[Joint dynamics dialog]</p>
+<p class="imageLabel"></p>
+<p>Several control modes are supported:</p>
+<p class="imageLabel"></p>
+<ul>
+<li>Free (no control): the joint is free, i.e. non-motorized</li>
+<li>Force/torque control: the joint is controlled in force/torque, i.e. a constant force/torque is applied. Can be modulated with <a href="https://mde.tw/pjcopsim/content/regularApi/simSetJointTargetForce.html">sim.setJointTargetForce</a></li>
+<li>Velocity control: the joint is controlled in velocity: the specified force/torque is applied until the desired velocity is reached. Optionally, a specific motion profile for the velocity can be applied. Can be modulated with <a href="https://mde.tw/pjcopsim/content/regularApi/simSetJointTargetVelocity.html">sim.setJointTargetVelocity</a> and <a href="https://mde.tw/pjcopsim/content/regularApi/simSetJointTargetForce.html">sim.setJointTargetForce</a></li>
+<li>Position control: the joint is controlled in position: the specified force/torque is applied and the velocity is modulated via a PID controller, or via specific motion constraints, until the target position/angle is reached. Parameters can be adjusted with <a href="https://mde.tw/pjcopsim/content/regularApi/simSetJointTargetPosition.html">sim.setJointTargetPosition</a>, <a href="https://mde.tw/pjcopsim/content/regularApi/simSetJointTargetForce.html">sim.setJointTargetForce</a> and <a href="https://mde.tw/pjcopsim/content/regularApi/simSetObjectFloatParam.html">sim.setObjectFloatParam</a></li>
+<li>Spring-damper control: the joint is controlled in position by modulating the exerted force/torque via a simple KC controller, trying to reach the zero displacement position/angle. Parameters can be adjusted with <a href="https://mde.tw/pjcopsim/content/regularApi/simSetJointTargetPosition.html">sim.setJointTargetPosition</a>, <a href="https://mde.tw/pjcopsim/content/regularApi/simSetJointTargetForce.html">sim.setJointTargetForce</a> and <a href="https://mde.tw/pjcopsim/content/regularApi/simSetObjectFloatParam.html">sim.setObjectFloatParam</a></li>
+<li>Custom control: the joint calls a <a href="https://mde.tw/pjcopsim/content/jointCallbackFunctions.html">joint callback function</a> for control, where the user can decide of a force/torque and target velocity in a flexible way</li>
+</ul>
+<br />Joints << <a href='Joints.html'>Previous</a> <a href='Force sensor.html'>Next</a> >> Force sensor</div>
         
     <!-- footer -->
       <div class="container">

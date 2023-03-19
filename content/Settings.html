@@ -2,7 +2,7 @@
         <head>
         <title>cd2023</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,9 +141,43 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">NX2027 << <a href='NX2027.html'>Previous</a> <a href='Onshape.html'>Next</a> >> Onshape<br /><h1>NX Server</h1>
-<p>Web based NX2027 Server</p>
-<br />NX2027 << <a href='NX2027.html'>Previous</a> <a href='Onshape.html'>Next</a> >> Onshape</div>
+    <div id="tipue_search_content">BubbleRub << <a href='BubbleRub.html'>Previous</a> <a href='Interface.html'>Next</a> >> Interface<br /><h1>Settings</h1>
+<h4>User settings</h4>
+<p>Some values and settings in CoppeliaSim are not dependent on a <a href="https://mde.tw/pjcopsim/content/scenes.html">scene</a> or <a href="https://mde.tw/pjcopsim/content/models.html">model</a>, but rather dependent on the user. The user settings dialog (which partially reflects the content of file <em>system/usrset.txt</em>) can be accessed with [Menu bar --&gt; Tools --&gt; Settings] or by clicking following toolbar button:</p>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/settings1.jpg"/></p>
+<p class="imageLabel">[Settings toolbar button]</p>
+<p></p>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/settings2.jpg"/></p>
+<p class="imageLabel">[User settings dialog]</p>
+<p></p>
+<ul>
+<li>Translation step size: the linear step size used when translating <a href="https://mde.tw/pjcopsim/content/objects.html">objects</a> in the <a href="https://mde.tw/pjcopsim/content/objectMovement.html">object manipulation mode</a>. It is recommended to keep a value of 5 cm. Objects can be assigned specific step sizes in the <a href="https://mde.tw/pjcopsim/content/coordinateDialog.html">coordinate and transformation dialog</a>.</li>
+<li>Rotation step size: the angular step size used when rotating <a href="https://mde.tw/pjcopsim/content/objects.html">objects</a> in the <a href="https://mde.tw/pjcopsim/content/objectMovement.html">object manipulation mode</a>. Objects can be assigned specific step sizes in the <a href="https://mde.tw/pjcopsim/content/coordinateDialog.html">coordinate and transformation dialog</a>.</li>
+<li>Remove identical vertices, tolerance: when selected, vertices that lay nearby other vertices will be grouped to form one single vertex (that will then be shared among surrounding triangles). This reduces the amount of memory resources needed. This parameter is affecting meshes when they are being <a href="https://mde.tw/pjcopsim/content/importExport.html">imported</a> or <a href="https://mde.tw/pjcopsim/content/shapes.html">shapes</a> when leaving the <a href="https://mde.tw/pjcopsim/content/shapeEditModes.html">shape edit mode</a>. Tolerance specifies the distance threshold to consider when grouping vertices. In general, keep a low value, but different from zero: some mesh data formats (e.g. STL) assign individual vertices to each triangle, regardless whether a vertex is identical with another vertex in another triangle; this can considerably increase the amount of memory required.</li>
+<li>Remove identical triangles: when selected, identical triangles in a mesh resource will be removed during an import operation or when a shape leaves the shape edit mode.</li>
+<li>Ignore triangle winding: a triangle can have two distinct orientations (since it has two distinct faces). When this item is selected, the triangle orientation is ignored when identifying identical triangles.</li>
+<li>Undo/redo enabled: enables or disables the undo/redo functionality. That functionality operates by serializing (saving) the entire scene to memory every time a change was registered. Only differences with previous undo points are memorized so as to use little memory. This is a very efficient and fail-safe undo/redo that is also supported from <a href="https://mde.tw/pjcopsim/content/plugins.html">plugins</a> or the <a href="https://mde.tw/pjcopsim/content/mainClientApplication.html">main client application</a>, and that is permitted only because CoppeliaSim's serialization routines are very fast. There are however times when either the computer is really old or the scene content extremely large (e.g. very detailed cad data) where this method slows down the whole application. In that case, simply disable the undo/redo functionality.</li>
+<li>Display world reference: displays a small world reference frame in the lower left hand side of a <a href="https://mde.tw/pjcopsim/content/cameras.html">camera</a> view. As everywhere in CoppeliaSim, the red, green and blue arrows correspond to the x-, y-, and z-axis respectively.</li>
+<li>Display bounding boxes of selected objects: displays a white/yellow bounding box around selected objects</li>
+<li>Auto-save enabled: when auto-save is enabled, each opened scene will be saved on a regular basis. In case of a crash, the auto-saved scenes can be restored. The auto-save delay can be adjusted in the file system/usrset.txt.</li>
+<li>Hide console window: allows hiding or showing the <a href="https://mde.tw/pjcopsim/content/userInterface.html#ConsoleWindow">console window</a>. By default, the console window is hidden. On Mac, this item is not available (the standard output can be viewed in the system console (Applications/Utilities/Console)).</li>
+<li>Hide hierarchy during simul.: automatically hides the scene hierarchy when simulation is running.</li>
+<li>Adjust OpenGL settings: opens a dialog that allows to adjust most settings related to OpenGL:</li>
+</ul>
+<p><br/> </p>
+<p></p>
+<h4><a name="openGl"></a>OpenGL settings</h4>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/openGlSettings.jpg"/></p>
+<p class="imageLabel">[OpenGL settings dialog]</p>
+<p></p>
+<ul>
+<li>Offscreen context type: the type of the offscreen rendering contexts. Default are invisible windows.</li>
+<li>FBO type: the type of the frame buffer objects. Default are Qt-based FBOs on Mac, and Non-Qt-based FBOs on Windows and Linux.</li>
+<li>VBO operation: whether Vertex Buffer Objects are used. The default option uses VBOs.</li>
+<li>Idle fps: the number of frames per second when idle.</li>
+</ul>
+<p></p>
+<br />BubbleRub << <a href='BubbleRub.html'>Previous</a> <a href='Interface.html'>Next</a> >> Interface</div>
         
     <!-- footer -->
       <div class="container">

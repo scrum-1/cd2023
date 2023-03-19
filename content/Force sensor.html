@@ -2,7 +2,7 @@
         <head>
         <title>cd2023</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,9 +141,23 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">NX2027 << <a href='NX2027.html'>Previous</a> <a href='Onshape.html'>Next</a> >> Onshape<br /><h1>NX Server</h1>
-<p>Web based NX2027 Server</p>
-<br />NX2027 << <a href='NX2027.html'>Previous</a> <a href='Onshape.html'>Next</a> >> Onshape</div>
+    <div id="tipue_search_content">Joint properties << <a href='Joint properties.html'>Previous</a> <a href='Dynamic simulation.html'>Next</a> >> Dynamic simulation<br /><h1>Force sensor</h1>
+<h4>Force sensors <img src="https://mde.tw/pjcopsim/images/forceSensors1.jpg"/></h4>
+<p>Force sensors are initially rigid links between two <a href="https://mde.tw/pjcopsim/content/shapes.html">shapes</a> that are able to measure transmitted forces and torques. The rigidity of force sensors is conditional, in the sense that force sensors can be <em>broken</em> if a certain condition arises (e.g. if a force or torque threshold is overshot). Following figure illustrates an application using a force sensor:</p>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/forceSensors2.jpg"/></p>
+<p class="imageLabel">[Force sensor object (green) measuring the force and torque exerted by a beam (blue) anchored in a wall (red)]</p>
+<p></p>
+<p>A force sensor measures a pair of 3 values representing the force on the sensor along the x-, y- and z-axis, and the torque on the sensor about the x-, y- and z-axis:</p>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/forceSensors3.jpg"/></p>
+<p class="imageLabel">[Forces and torques measured by a force sensor]</p>
+<p></p>
+<p>Initially, a force sensor acts as a rigid link. During <a href="https://mde.tw/pjcopsim/content/simulation.html">simulation</a>, a force sensor can however be <em>broken</em> when a specified force/torque threshold is overshot or when some other user-defined conditions are met. Following figures illustrate the <em>broken</em> state of a force sensor:</p>
+<p align="center"><img src="https://mde.tw/pjcopsim/images/forceSensors4.jpg"/></p>
+<p class="imageLabel">[Broken force sensor]</p>
+<p></p>
+<p>A force sensor is only operational during simulation if it is dynamically enabled. For more information on dynamically enabled force sensors, refer also to the section on <a href="https://mde.tw/pjcopsim/content/designingDynamicSimulations.html">designing dynamic simulations</a>. <a href="https://mde.tw/pjcopsim/content/joints.html">Joints</a> are also able to measure a force or a torque, however only along/about their z-axis.</p>
+<p>Force sensors are added to the <a href="https://mde.tw/pjcopsim/content/scenes.html">scene</a> with [Menu bar --&gt; Add --&gt; Force sensor].</p>
+<br />Joint properties << <a href='Joint properties.html'>Previous</a> <a href='Dynamic simulation.html'>Next</a> >> Dynamic simulation</div>
         
     <!-- footer -->
       <div class="container">
