@@ -130,7 +130,9 @@
 <p>設定是否讓用戶自行註冊帳號:</p>
 <p>tcexam\shared\config\tce_user_registration.php</p>
 <p> /* kmol1*/<br/>define('K_USRREG_ENABLED', false);</p>
-<h2>Ref</h2>
+<h3>2a 註冊</h3>
+<p>tier</p>
+<p>41023132<br/>41023154<br/>41023113<br/>41023119<br/>41023125<br/>41023138<br/>41039138<br/>41023108<br/>41023146<br/>41023120<br/>41023124<br/>41023114</p><h2>Ref</h2>
 <p>2014</p>
 <p style="padding-left: 30px;"><a href="https://github.com/coursemdetw?tab=repositories">https://github.com/coursemdetw?tab=repositories</a></p>
 <p style="padding-left: 30px;">2014 cp: <a href="https://vimeo.com/115314619">https://vimeo.com/115314619</a></p>
@@ -749,7 +751,7 @@ Draw (mesh);</pre>
 <p>We run the simulation and notice that the robot is falling backwards. We are still missing a third contact point to the floor. We now add a small slider (or caster). In a new scene we and add a pure primitive sphere with diameter 0.05 and make the sphere <a href="https://mde.tw/pjcopsim/content/collidableObjects.html">Collidable</a>, <a href="https://mde.tw/pjcopsim/content/measurableObjects.html">Measurable</a> and <a href="https://mde.tw/pjcopsim/content/detectableObjects.html">Detectable</a> (if not already enabled), then rename it to <em>slider</em>. We set the Material to <em>noFrictionMaterial </em>in the <a href="https://mde.tw/pjcopsim/content/shapeDynamicsProperties.html">shape dynamics properties</a>. To rigidly link the slider with the rest of the robot, we add a<a href="https://mde.tw/pjcopsim/content/forceSensors.html"> force sensor object</a> with [Menu bar --&gt; Add --&gt; Force sensor]. We rename it to <em>connection</em> and shift it up by 0.05. We attach the slider to the force sensor, then copy both objects, switch back to scene 1 and paste them. We then shift the force sensor by -0.07 along the absolute X-axis, then attach it to the robot body. If we run the simulation now, we can notice that the slider is slightly moving in relation to the robot body: this is because both objects (i.e. <em>slider</em> and <em>bubbleRob</em>) are colliding with each other. To avoid strange effects during dynamics simulation, we have to inform CoppeliaSim that both objects do not mutually collide, and we do this in following way: in the <a href="https://mde.tw/pjcopsim/content/shapeDynamicsProperties.html">shape dynamics properties</a>, for <em>slider</em> we set the local respondable mask to 00001111, and for <em>bubbleRob</em>, we set the local respondable mask to 11110000. If we run the simulation again, we can notice that both objects do not interfere anymore.</p>
 <p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EVkZ050kg0RCpr4zm1OZRy8BqKDGfmpcIRsy3a0L1dxfDA?e=Ablduu">bubbleRob1.ttt</a> (velocity 100 for both wheel)</p>
 <p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EfU39oiqUe9PlGEDOVVQGCIBsCDzfnwiDFhLE9tfNP7HRA?e=ZVK16Q">bubbleRob1_zero_vel.ttt</a></p>
-<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EbDmeZKI6nVLpKiIPFbSaGcB9lRpXUqiJ8P7NwMi5a-xlg?e=dIEA4x">buttleRob1_threaded_lua.ttt</a></p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EaJxtv8RktVAnxH5cJ9hFksBiucSKQW61FbAbedGtVrg1Q?e=td8mV8">buttleRob1_threaded_lua.ttt</a></p>
 <h4>Run the simuation again</h4>
 <p>We run the simulation again and notice that <em>BubbleRob</em> slightly moves, even with locked motor. We also try to run the simulation with different physics engines: the result will be different. Stability of dynamic simulations is tightly linked to masses and inertias of the involved non-static shapes. For an explanation of this effect, make sure to carefully read <a href="https://mde.tw/pjcopsim/content/designingDynamicSimulations.html#masses">this</a> and <a href="https://mde.tw/pjcopsim/content/designingDynamicSimulations.html#inertias">that</a> sections. We now try to correct for that undesired effect. We select the two wheels and the slider, and in the shape dynamics dialog we click three times M=M*2 (for selection). The effect is that all selected shapes will have their masses multiplied by 8. We do the same with the inertias of the 3 selected shapes, then run the simulation again: stability has improved. In the joint dynamics dialog, we set the Target velocity to 50 for both motors. We run the simulation: <em>BubbleRob</em> now moves forward and eventually falls off the floor. We reset the Target velocity item to zero for both motors.</p>
 <hr/>
@@ -1423,4 +1425,35 @@ function sysCall_cleanup()
     simUI.destroy(ui)
 end 
 </pre>
-<p></p>
+<h2>Leo Editor</h2>
+<p>recursive importer:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''Recursively import all python files in a directory and clean the result.'''
+# ctrl + b to execute
+
+c.recursiveImport(
+    dir_ = r'./',
+    kind = '@clean', # The new best practice.
+    safe_at_file = False,
+    theTypes = ['.lua'] 
+)</pre>
+<p>get_xml_tags.py</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># from https://stackoverflow.com/questions/29596584/getting-a-list-of-xml-tags-in-file-using-xml-etree-elementtree
+import xml.etree.ElementTree as ET
+# load and parse the file
+xmlTree = ET.parse('two_links_exhaustive.simscene.xml')
+
+elemList = []
+
+for elem in xmlTree.iter():
+    elemList.append(elem.tag)
+
+# now I remove duplicities - by convertion to set and back to list
+elemList = list(set(elemList))
+
+# Just printing out the result
+print(len(elemList))
+
+for i in elemList:
+    print(i)</pre>
+<p>@data import_xml_tags</p>
+<p>coppe</p>

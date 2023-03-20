@@ -130,7 +130,9 @@
 <p>設定是否讓用戶自行註冊帳號:</p>
 <p>tcexam\shared\config\tce_user_registration.php</p>
 <p> /* kmol1*/<br/>define('K_USRREG_ENABLED', false);</p>
-<h2>Ref</h2>
+<h3>2a 註冊</h3>
+<p>tier</p>
+<p>41023132<br/>41023154<br/>41023113<br/>41023119<br/>41023125<br/>41023138<br/>41039138<br/>41023108<br/>41023146<br/>41023120<br/>41023124<br/>41023114</p><h2>Ref</h2>
 <p>2014</p>
 <p style="padding-left: 30px;"><a href="https://github.com/coursemdetw?tab=repositories">https://github.com/coursemdetw?tab=repositories</a></p>
 <p style="padding-left: 30px;">2014 cp: <a href="https://vimeo.com/115314619">https://vimeo.com/115314619</a></p>
@@ -1423,4 +1425,35 @@ function sysCall_cleanup()
     simUI.destroy(ui)
 end 
 </pre>
-<p></p>
+<h2>Leo Editor</h2>
+<p>recursive importer:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''Recursively import all python files in a directory and clean the result.'''
+# ctrl + b to execute
+
+c.recursiveImport(
+    dir_ = r'./',
+    kind = '@clean', # The new best practice.
+    safe_at_file = False,
+    theTypes = ['.lua'] 
+)</pre>
+<p>get_xml_tags.py</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># from https://stackoverflow.com/questions/29596584/getting-a-list-of-xml-tags-in-file-using-xml-etree-elementtree
+import xml.etree.ElementTree as ET
+# load and parse the file
+xmlTree = ET.parse('two_links_exhaustive.simscene.xml')
+
+elemList = []
+
+for elem in xmlTree.iter():
+    elemList.append(elem.tag)
+
+# now I remove duplicities - by convertion to set and back to list
+elemList = list(set(elemList))
+
+# Just printing out the result
+print(len(elemList))
+
+for i in elemList:
+    print(i)</pre>
+<p>@data import_xml_tags</p>
+<p><a href="/downloads/coppeliasim_xml_tags.7z">coppeliasim_xml_tags.7z</a></p>

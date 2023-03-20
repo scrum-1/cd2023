@@ -2,7 +2,7 @@
         <head>
         <title>cd2023</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,47 +141,38 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">SE Tutorial << <a href='SE Tutorial.html'>Previous</a> <a href='Virtualization.html'>Next</a> >> Virtualization<br /><h1>DLL</h1>
-<p>如何透過 Python 重用 Windows TLB or OCX 等 DLL 動態連結程式庫</p>
-<p>以下的 Python 程式採用 <a href="https://mde.tw/wcm2023/content/w2.html">https://mde.tw/wcm2023/content/w2.html</a> 中所建立的可攜 Python 程式套件:</p>
-<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EXQljJw1yE9At9MDkIklVFAB9Ef3q59sTJnbRiVWOSSGdw?e=AtNFlJ">wcm_portable_w2-2.7z</a></p>
-<p>並進行下列修改:</p>
-<ol>
-<li>建立 home_ipv6 目錄下的 DeskTop 目錄</li>
-<li>編輯 python.properties 將 line 153 改為: python.command=pythonw</li>
-<li>編輯 SciTEGlobal.properties 將 line 162 改為: load.on.activate=1</li>
-<li>編輯 SciTEGlobal.properties 將 line 204 改為: tabsize=4</li>
-<li>編輯 SciTEGlobal.properties 將 line 205 改為: indent.size=4</li>
-<li>編輯 SciTEGlobal.properties 將 line 335 # 拿掉</li>
-<li>編輯 SciTEGlobal.properties 將 line 336 以 # 蓋掉</li>
-</ol>
-<p>修改之後的可攜 Python: <a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/ESbmgwyK-5xGj9A18njOsXoBOmk8gsB0317yaUD3jnK2wQ?e=oOsAnr">wcm_portable_w2-3.7z</a></p>
-<p>然後參考<a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics">與 GetSystemMetrics 有關的說明</a>, 執行下列程式:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import ctypes
+    <div id="tipue_search_content">bubbleRob threaded lua << <a href='bubbleRob threaded lua.html'>Previous</a> <br /><h1>Leo Editor</h1>
+<p>recursive importer:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''Recursively import all python files in a directory and clean the result.'''
+# ctrl + b to execute
 
-user32 = ctypes.WinDLL('User32.dll')
-print("目前螢幕設定寬:" + str(user32.GetSystemMetrics(0)))
-print("目前螢幕設定長:" + str(user32.GetSystemMetrics(1)))</pre>
-<p>接著確認上述可攜系統已經安裝 pywin32: pip install pywin32</p>
-<p>就可以利用 python -m win32com.client.combrowse 瀏覽操作系統中的 COM 程式庫.</p>
-<p>若要將 Solid Edge Type library 轉為 .py, 執行 python -m win32com.client.makepy -i</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Y:\&gt;python -m win32com.client.makepy -i
-Solid Edge Geometry Type Library
- {3E2B3BE1-F0B9-11D1-BDFD-080036B4D502}, lcid=0, major=1, minor=0
- &gt;&gt;&gt; # Use these commands in Python code to auto generate .py support
- &gt;&gt;&gt; from win32com.client import gencache
- &gt;&gt;&gt; gencache.EnsureModule('{3E2B3BE1-F0B9-11D1-BDFD-080036B4D502}', 0, 1, 0)</pre>
-<p>接著利用 Python 程式執行, 列出轉為 .py 後的 Type Library 所在位置:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from win32com.client import gencache
+c.recursiveImport(
+    dir_ = r'./',
+    kind = '@clean', # The new best practice.
+    safe_at_file = False,
+    theTypes = ['.lua'] 
+)</pre>
+<p>get_xml_tags.py</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># from https://stackoverflow.com/questions/29596584/getting-a-list-of-xml-tags-in-file-using-xml-etree-elementtree
+import xml.etree.ElementTree as ET
+# load and parse the file
+xmlTree = ET.parse('two_links_exhaustive.simscene.xml')
 
-geom_type_lib = gencache.EnsureModule('{3E2B3BE1-F0B9-11D1-BDFD-080036B4D502}', 0, 1, 0)
-print(dir(geom_type_lib))
-print(repr(geom_type_lib))</pre>
-<p>執行後可以取得 Solid Edge Geometry Type Library 轉出 .py 後的檔案所在目錄:</p>
-<p>&lt;module 'win32com.gen_py.3E2B3BE1-F0B9-11D1-BDFD-080036B4D502x0x1x0' from 'C:\\Users\\pj2023\\AppData\\Local\\Temp\\gen_py\\3.11\\3E2B3BE1-F0B9-11D1-BDFD-080036B4D502x0x1x0.py'&gt;<br/><br/></p>
-<p>參考:</p>
-<p style="padding-left: 30px;"><a href="https://nfuedu-my.sharepoint.com/:b:/g/personal/yen_nfu_edu_tw/EZLh-WxUQalCsEevZZYg5j4BWKeqLa1CkTukFFg7yyIArA?e=nctqWp">Solid Edge Programming Guide.pdf</a> (for @nfu users only)</p>
-<br />SE Tutorial << <a href='SE Tutorial.html'>Previous</a> <a href='Virtualization.html'>Next</a> >> Virtualization</div>
+elemList = []
+
+for elem in xmlTree.iter():
+    elemList.append(elem.tag)
+
+# now I remove duplicities - by convertion to set and back to list
+elemList = list(set(elemList))
+
+# Just printing out the result
+print(len(elemList))
+
+for i in elemList:
+    print(i)</pre>
+<p>@data import_xml_tags</p>
+<p><a href="./../downloads/coppeliasim_xml_tags.7z">coppeliasim_xml_tags.7z</a></p><br />bubbleRob threaded lua << <a href='bubbleRob threaded lua.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">
