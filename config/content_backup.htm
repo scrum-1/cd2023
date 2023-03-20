@@ -1361,7 +1361,9 @@ end</pre>
 <p></p>
 <p>Scripts are invoked via <a href="https://mde.tw/pjcopsim/content/callbackFunctions.html">callback functions</a> by CoppeliaSim, and follow a <a href="https://mde.tw/pjcopsim/content/scriptExecution.html">specific execution order</a>. They can <a href="https://mde.tw/pjcopsim/content/threadedAndNonThreadedCode.html">run threaded or non-threaded</a>.</p>
 <p>CoppeliaSim scripts may be published under any license.</p>
-<h3>bubbleRob threaded lua</h3>
+<h3>bubbleRob scripts</h3>
+<p>non threaded lua and python for bubbleRob with version control:</p>
+<p style="padding-left: 30px;"><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EVJF0cjXi_FPqPKEcf5OubUBaPLsPD3vj1XnPcg0uX3XvQ?e=DNhK9N">2023_cd_bubbleRob_lua_py.7z</a></p>
 <p>Lua local variables and blocks: <a href="https://www.lua.org/pil/4.2.html">https://www.lua.org/pil/4.2.html</a></p>
 <pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
          
@@ -1424,8 +1426,7 @@ end
 function sysCall_cleanup() 
     simUI.destroy(ui)
 end 
-</pre>
-<h2>Leo Editor</h2>
+</pre><h2>Leo Editor</h2>
 <p>recursive importer:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''Recursively import all python files in a directory and clean the result.'''
 # ctrl + b to execute
