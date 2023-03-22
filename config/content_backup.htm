@@ -356,6 +356,9 @@ Web-based content management, collaborative product design.
 <p>請將 CoppeliaSim <a href="https://mde.tw/pjcopsim/content/bubbleRobTutorial.html">Tutorial1</a> 練習結果與心得放入分組網站中的 tutorial1 頁面</p>
 <p>實習主題: <span style="background-color: #ffff00;">開發一款能在 web-based CoppeliaSim 場景中雙方或多方 (human or computer) 對玩的遊戲 (game) 產品</span>.</p>
 <p style="padding-left: 30px;">請從 CoppeliaSim 的<a href="https://mde.tw/cd2023/content/%E6%A8%A1%E6%93%AC%E5%A0%B4%E6%99%AF.html">模擬場景</a> Tutorial 進行練習, 例如: <a href="https://mde.tw/pjcopsim/content/bubbleRobTutorial.html">Tutorial1</a></p>
+<p style="padding-left: 30px;">pj1 遊戲範例:</p>
+<p style="padding-left: 60px;"><a href="https://d-nb.info/1032558393/34">Robot Soccer.pdf</a> (機器足球員)</p>
+<p style="padding-left: 60px;"><a href="https://www.kongregate.com/games/Mark0960/ziggy">射擊逃命遊戲</a>: <a href="https://github.com/MaRK0960/ball-control-by-mouse">https://github.com/MaRK0960/ball-control-by-mouse</a></p>
 <p style="padding-left: 30px;">demo 分組專案:</p>
 <p style="padding-left: 60px;">倉儲: <a href="https://github.com/mdecd2023/2a-pj1agx">https://github.com/mdecd2023/2a-pj1agx</a></p>
 <p style="padding-left: 60px;">網站: <a href="https://mdecd2023.github.io/2a-pj1agx">https://mdecd2023.github.io/2a-pj1agx</a></p>
@@ -381,8 +384,7 @@ Web-based content management, collaborative product design.
 <p style="padding-left: 60px;">mdecd2023/4b-pj2bg1</p>
 <p style="padding-left: 30px;">Project 3: 八人一組的協同倉儲</p>
 <p style="padding-left: 60px;">mdecd2023/8a-pj3ag1</p>
-<p style="padding-left: 60px;">mdecd2023/8b-pj3bg1</p>
-<h3>pj1bgz</h3>
+<p style="padding-left: 60px;">mdecd2023/8b-pj3bg1</p><h3>pj1bgz</h3>
 <p><a href="https://github.com/mdecd2023/2b-pj1bgz">https://github.com/mdecd2023/2b-pj1bgz</a></p>
 <p><a href="https://mdecd2023.github.io/2b-pj1bgz">https://mdecd2023.github.io/2b-pj1bgz</a></p>
 <p>利用上述倉儲, 以 cmsimde 單獨作為目錄, 以 SSH 協定取得管理權限, 並且納入協同 LaTeX 分組報告編寫機制的教學影片: <a href="https://nfuedu-my.sharepoint.com/:v:/g/personal/yen_nfu_edu_tw/EXuWyey2z9FOglDgoPd3ZEEBZk3fncyhj8BuQDrHpTOOuA?e=gsi6kz">2b-pj1bgz 分組倉儲 SSH 與 LaTeX 分組報告製作教學.mp4</a></p>
@@ -1364,6 +1366,11 @@ end</pre>
 <h3>bubbleRob scripts</h3>
 <p>non threaded lua and python for bubbleRob with version control:</p>
 <p style="padding-left: 30px;"><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/EVJF0cjXi_FPqPKEcf5OubUBaPLsPD3vj1XnPcg0uX3XvQ?e=DNhK9N">2023_cd_bubbleRob_lua_py.7z</a></p>
+<p style="padding-left: 30px;">Lua 索引從 1 開始, 而 Python 則從 0 開始.</p>
+<p style="padding-left: 30px;">for Python script to be executed under CoppeliaSim:</p>
+<p style="padding-left: 60px;">system/usrset.txt</p>
+<p style="padding-left: 90px;">defaultPython = Y:/Python311/python.exe<br/>executeUnsafe = true</p>
+<p style="padding-left: 60px;">pip install pyzmq cbor</p>
 <p>Lua local variables and blocks: <a href="https://www.lua.org/pil/4.2.html">https://www.lua.org/pil/4.2.html</a></p>
 <pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
          
